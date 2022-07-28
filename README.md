@@ -1,0 +1,2 @@
+# NIFTY
+about NIFTY project
