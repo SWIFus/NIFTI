@@ -1,0 +1,23 @@
+{
+  "pins" : [
+    {
+      "identity" : "pinlayout",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/layoutBox/PinLayout",
+      "state" : {
+        "revision" : "75c88c5c374c7bc78a154ffdf963cd362f38258a",
+        "version" : "1.10.3"
+      }
+    },
+    {
+      "identity" : "qrcode",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/dmrschmidt/QRCode",
+      "state" : {
+        "revision" : "a23c2d2b77483c5ce20ffaf4e68fef2d1a0bbca9",
+        "version" : "1.1.0"
+      }
+    }
+  ],
+  "version" : 2
+}
