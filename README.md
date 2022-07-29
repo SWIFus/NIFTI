@@ -1,2 +1,2 @@
-# NIFTY
-about NIFTY project
+# NIFTI
+about NIFTI project
