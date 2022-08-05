@@ -35,7 +35,7 @@ class BlockChain {
     getBlocks() {
         return [...this.blocks];
     }
-    isValidNewBlock(data) { // 유효성 검사코드
+    isValidNewBlock(data) {
         const newblock = new Block(this.getPrevHash(), this.blocks.length + 1, data);
         if (newblock.Hash !== newblock.prevHash) {
             return { isError: true, error: '이전 해시값이 맞지 않습니다.' };
