@@ -4,7 +4,7 @@
   "description": "",
   "scripts": {
     "build": "tsc",
-    "start": "node build/block.js"
+    "start": "node build/newblock.js"
   },
   "keywords": [],
   "author": "",
