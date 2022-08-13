@@ -1,0 +1,388 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		249152B4289F9C1900211D08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249152B3289F9C1900211D08 /* AppDelegate.swift */; };
+		249152B6289F9C1900211D08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249152B5289F9C1900211D08 /* SceneDelegate.swift */; };
+		249152B8289F9C1900211D08 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249152B7289F9C1900211D08 /* StartViewController.swift */; };
+		249152BD289F9C1B00211D08 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 249152BC289F9C1B00211D08 /* Assets.xcassets */; };
+		249152C0289F9C1B00211D08 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 249152BE289F9C1B00211D08 /* LaunchScreen.storyboard */; };
+		249152EA28A2462100211D08 /* NiftiQrViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249152E928A2462100211D08 /* NiftiQrViewController.swift */; };
+		24A84E2C28A60B6B00C96899 /* QRCode in Frameworks */ = {isa = PBXBuildFile; productRef = 24A84E2B28A60B6B00C96899 /* QRCode */; };
+		24A84E3128A6120E00C96899 /* ExtensionUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A84E3028A6120E00C96899 /* ExtensionUtil.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		249152B0289F9C1900211D08 /* Nifti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nifti.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		249152B3289F9C1900211D08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		249152B5289F9C1900211D08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		249152B7289F9C1900211D08 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		249152BC289F9C1B00211D08 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		249152BF289F9C1B00211D08 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		249152C1289F9C1B00211D08 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		249152C728A204ED00211D08 /* Nifti.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nifti.entitlements; sourceTree = "<group>"; };
+		249152E928A2462100211D08 /* NiftiQrViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiftiQrViewController.swift; sourceTree = "<group>"; };
+		24A84E3028A6120E00C96899 /* ExtensionUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUtil.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		249152AD289F9C1900211D08 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				24A84E2C28A60B6B00C96899 /* QRCode in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		249152A7289F9C1900211D08 = {
+			isa = PBXGroup;
+			children = (
+				249152B2289F9C1900211D08 /* Nifti */,
+				249152B1289F9C1900211D08 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		249152B1289F9C1900211D08 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				249152B0289F9C1900211D08 /* Nifti.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		249152B2289F9C1900211D08 /* Nifti */ = {
+			isa = PBXGroup;
+			children = (
+				249152C728A204ED00211D08 /* Nifti.entitlements */,
+				249152B3289F9C1900211D08 /* AppDelegate.swift */,
+				249152B5289F9C1900211D08 /* SceneDelegate.swift */,
+				249152B7289F9C1900211D08 /* StartViewController.swift */,
+				249152E928A2462100211D08 /* NiftiQrViewController.swift */,
+				24A84E3028A6120E00C96899 /* ExtensionUtil.swift */,
+				249152BC289F9C1B00211D08 /* Assets.xcassets */,
+				249152BE289F9C1B00211D08 /* LaunchScreen.storyboard */,
+				249152C1289F9C1B00211D08 /* Info.plist */,
+			);
+			path = Nifti;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		249152AF289F9C1900211D08 /* Nifti */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 249152C4289F9C1B00211D08 /* Build configuration list for PBXNativeTarget "Nifti" */;
+			buildPhases = (
+				249152AC289F9C1900211D08 /* Sources */,
+				249152AD289F9C1900211D08 /* Frameworks */,
+				249152AE289F9C1900211D08 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Nifti;
+			packageProductDependencies = (
+				24A84E2B28A60B6B00C96899 /* QRCode */,
+			);
+			productName = Nifti;
+			productReference = 249152B0289F9C1900211D08 /* Nifti.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		249152A8289F9C1900211D08 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1340;
+				LastUpgradeCheck = 1340;
+				TargetAttributes = {
+					249152AF289F9C1900211D08 = {
+						CreatedOnToolsVersion = 13.4.1;
+					};
+				};
+			};
+			buildConfigurationList = 249152AB289F9C1900211D08 /* Build configuration list for PBXProject "Nifti" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 249152A7289F9C1900211D08;
+			packageReferences = (
+				24A84E2A28A60B6B00C96899 /* XCRemoteSwiftPackageReference "QRCode" */,
+			);
+			productRefGroup = 249152B1289F9C1900211D08 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				249152AF289F9C1900211D08 /* Nifti */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		249152AE289F9C1900211D08 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				249152C0289F9C1B00211D08 /* LaunchScreen.storyboard in Resources */,
+				249152BD289F9C1B00211D08 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		249152AC289F9C1900211D08 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				249152B8289F9C1900211D08 /* StartViewController.swift in Sources */,
+				249152B4289F9C1900211D08 /* AppDelegate.swift in Sources */,
+				249152EA28A2462100211D08 /* NiftiQrViewController.swift in Sources */,
+				249152B6289F9C1900211D08 /* SceneDelegate.swift in Sources */,
+				24A84E3128A6120E00C96899 /* ExtensionUtil.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		249152BE289F9C1B00211D08 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				249152BF289F9C1B00211D08 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		249152C2289F9C1B00211D08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		249152C3289F9C1B00211D08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		249152C5289F9C1B00211D08 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Nifti/Nifti.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UKZF3A6P2B;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Nifti/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = BoMin.Nifti;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		249152C6289F9C1B00211D08 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Nifti/Nifti.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = UKZF3A6P2B;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Nifti/Info.plist;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = BoMin.Nifti;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		249152AB289F9C1900211D08 /* Build configuration list for PBXProject "Nifti" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				249152C2289F9C1B00211D08 /* Debug */,
+				249152C3289F9C1B00211D08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		249152C4289F9C1B00211D08 /* Build configuration list for PBXNativeTarget "Nifti" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				249152C5289F9C1B00211D08 /* Debug */,
+				249152C6289F9C1B00211D08 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		24A84E2A28A60B6B00C96899 /* XCRemoteSwiftPackageReference "QRCode" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dmrschmidt/QRCode";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		24A84E2B28A60B6B00C96899 /* QRCode */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 24A84E2A28A60B6B00C96899 /* XCRemoteSwiftPackageReference "QRCode" */;
+			productName = QRCode;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 249152A8289F9C1900211D08 /* Project object */;
+}
