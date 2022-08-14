@@ -6,7 +6,6 @@
 //
 
 import UIKit
-import PinLayout
 import QRCode
 
 class NiftiQrViewController: UIViewController {
@@ -53,7 +52,8 @@ class NiftiQrViewController: UIViewController {
     let qrCodeImageView: UIImageView = {
         var qrCode = QRCode(string: "www.google.com")
         
-        qrCode!.color = .blue
+        qrCode!.color = .black
+
         qrCode!.backgroundColor = UIColor(red: 0.882, green: 0.863, blue: 0.851, alpha: 1)
         qrCode!.size = CGSize(width: 150, height: 150)
         qrCode!.scale = 1.0
@@ -79,6 +79,8 @@ class NiftiQrViewController: UIViewController {
     
 //MARK: viewDidLoad
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         setView()
         setAutoLayouts()
 
@@ -110,13 +112,17 @@ extension NiftiQrViewController {
     func qrViewAutoLayout() {
         qrView.translatesAutoresizingMaskIntoConstraints = false
         
-        // set width & height anchors
-        qrView.widthAnchor.constraint(equalToConstant: 200).isActive = true
-        qrView.heightAnchor.constraint(equalToConstant: 200).isActive = true
+        let qrViewConstraints = [
+            // set width & height anchors
+            qrView.widthAnchor.constraint(equalToConstant: 200),
+            qrView.heightAnchor.constraint(equalTo: qrView.widthAnchor),
+            
+            // set other anchors
+            qrView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            qrView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 128)
+        ]
         
-        // set other anchors
-        qrView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        qrView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 128).isActive = true
+        NSLayoutConstraint.activate(qrViewConstraints)
     }
     
     func qrImageViewAutoLayout() {
@@ -164,7 +170,8 @@ extension NiftiQrViewController {
         
         // set other anchors
         connectToApps.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        connectToApps.topAnchor.constraint(equalTo: self.usernameLabel.topAnchor, constant: 80).isActive = true
+        connectToApps.topAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+//        connectToApps.topAnchor.
     }
     
 }

@@ -15,6 +15,8 @@
 		249152EA28A2462100211D08 /* NiftiQrViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249152E928A2462100211D08 /* NiftiQrViewController.swift */; };
 		24A84E2C28A60B6B00C96899 /* QRCode in Frameworks */ = {isa = PBXBuildFile; productRef = 24A84E2B28A60B6B00C96899 /* QRCode */; };
 		24A84E3128A6120E00C96899 /* ExtensionUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A84E3028A6120E00C96899 /* ExtensionUtil.swift */; };
+		24A84E5928A7FE5C00C96899 /* NiftiTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A84E5828A7FE5C00C96899 /* NiftiTabBarController.swift */; };
+		24A84E5B28A8E66700C96899 /* NiftiPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A84E5A28A8E66700C96899 /* NiftiPetViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +30,8 @@
 		249152C728A204ED00211D08 /* Nifti.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Nifti.entitlements; sourceTree = "<group>"; };
 		249152E928A2462100211D08 /* NiftiQrViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiftiQrViewController.swift; sourceTree = "<group>"; };
 		24A84E3028A6120E00C96899 /* ExtensionUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUtil.swift; sourceTree = "<group>"; };
+		24A84E5828A7FE5C00C96899 /* NiftiTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiftiTabBarController.swift; sourceTree = "<group>"; };
+		24A84E5A28A8E66700C96899 /* NiftiPetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiftiPetViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -65,11 +69,13 @@
 				249152B3289F9C1900211D08 /* AppDelegate.swift */,
 				249152B5289F9C1900211D08 /* SceneDelegate.swift */,
 				249152B7289F9C1900211D08 /* StartViewController.swift */,
+				24A84E5A28A8E66700C96899 /* NiftiPetViewController.swift */,
 				249152E928A2462100211D08 /* NiftiQrViewController.swift */,
 				24A84E3028A6120E00C96899 /* ExtensionUtil.swift */,
 				249152BC289F9C1B00211D08 /* Assets.xcassets */,
 				249152BE289F9C1B00211D08 /* LaunchScreen.storyboard */,
 				249152C1289F9C1B00211D08 /* Info.plist */,
+				24A84E5828A7FE5C00C96899 /* NiftiTabBarController.swift */,
 			);
 			path = Nifti;
 			sourceTree = "<group>";
@@ -152,7 +158,9 @@
 			files = (
 				249152B8289F9C1900211D08 /* StartViewController.swift in Sources */,
 				249152B4289F9C1900211D08 /* AppDelegate.swift in Sources */,
+				24A84E5928A7FE5C00C96899 /* NiftiTabBarController.swift in Sources */,
 				249152EA28A2462100211D08 /* NiftiQrViewController.swift in Sources */,
+				24A84E5B28A8E66700C96899 /* NiftiPetViewController.swift in Sources */,
 				249152B6289F9C1900211D08 /* SceneDelegate.swift in Sources */,
 				24A84E3128A6120E00C96899 /* ExtensionUtil.swift in Sources */,
 			);

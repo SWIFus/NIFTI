@@ -47,6 +47,8 @@ class StartViewController: UIViewController {
     
 //MARK: viewDidLoad
     override func viewDidLoad() {
+        super.viewDidLoad()
+        
         setView()
         setAutoLayouts()
     }
