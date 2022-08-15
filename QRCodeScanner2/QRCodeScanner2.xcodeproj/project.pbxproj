@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5D30779128A6033D005E6D3D /* QRCodeReader in Frameworks */ = {isa = PBXBuildFile; productRef = 5D30779028A6033D005E6D3D /* QRCodeReader */; };
 		5D30779328A60F46005E6D3D /* ReaderVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D30779228A60F46005E6D3D /* ReaderVIew.swift */; };
 		5DBDE0A1289E4B4F0088D535 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBDE0A0289E4B4F0088D535 /* AppDelegate.swift */; };
 		5DBDE0A3289E4B4F0088D535 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBDE0A2289E4B4F0088D535 /* SceneDelegate.swift */; };
@@ -59,7 +58,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5D30779128A6033D005E6D3D /* QRCodeReader in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,7 +147,6 @@
 			);
 			name = QRCodeScanner2;
 			packageProductDependencies = (
-				5D30779028A6033D005E6D3D /* QRCodeReader */,
 			);
 			productName = QRCodeScanner2;
 			productReference = 5DBDE09D289E4B4F0088D535 /* QRCodeScanner2.app */;
@@ -449,7 +446,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7TYL7A6LG8;
+				DEVELOPMENT_TEAM = UKZF3A6P2B;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QRCodeScanner2/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -477,7 +474,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7TYL7A6LG8;
+				DEVELOPMENT_TEAM = UKZF3A6P2B;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QRCodeScanner2/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -625,14 +622,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		5D30779028A6033D005E6D3D /* QRCodeReader */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 5D30778F28A6033C005E6D3D /* XCRemoteSwiftPackageReference "QRCodeReader" */;
-			productName = QRCodeReader;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 5DBDE095289E4B4F0088D535 /* Project object */;
 }

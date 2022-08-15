@@ -7,7 +7,6 @@
 
 import UIKit
 import AVFoundation
-import QRCodeReader
 
 class QRCodeScannerViewController: UIViewController, AVCaptureMetadataOutputObjectsDelegate {
     var captureSession: AVCaptureSession!

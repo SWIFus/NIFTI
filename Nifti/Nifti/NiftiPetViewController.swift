@@ -14,8 +14,17 @@ class NiftiPetViewController: UIViewController {
         
         petSquare.frame = CGRect(x: 0, y: 0, width: 280, height: 280)
         petSquare.backgroundColor = .white
+        
         petSquare.layer.backgroundColor = UIColor(red: 0.882, green: 0.863, blue: 0.851, alpha: 1).cgColor
         petSquare.layer.cornerRadius = 40
+        
+        // shadow - outside
+//        petSquare.layer.borderWidth = 1
+//        petSquare.layer.masksToBounds = false
+//        petSquare.layer.shadowColor = UIColor.black.cgColor
+//        petSquare.layer.shadowOffset = CGSize(width: 0, height: 20)
+//        petSquare.layer.shadowOpacity = 0.8
+//        petSquare.layer.shadowRadius = 5.0
         
         return petSquare
     }()
