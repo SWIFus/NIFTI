@@ -21,14 +21,16 @@ class NiftiTabBarController: UITabBarController {
         let niftiPetVC = NiftiPetViewController()
         let niftiScanVC = NiftiScanViewController()
         let niftiFriendVC = NiftiFriendViewController()
+        let niftiSettingsVC = NiftiSettingsViewController()
         
-        niftiQrVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "nifti-home.png"), selectedImage: UIImage(named: "nifti-home-fill.png"))
-        niftiPetVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "info.png"), selectedImage: UIImage(named: "info-fill.png"))
-        niftiScanVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "qrScan.png"), selectedImage: UIImage(named: "qrScan-fill.png"))
-        niftiFriendVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "circle"), selectedImage: UIImage(systemName: "circle-fill"))
+        niftiQrVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "nifti-home"), selectedImage: UIImage(named: "nifti-home-fill"))
+        niftiPetVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "info"), selectedImage: UIImage(named: "info-fill"))
+        niftiScanVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "qrScan"), selectedImage: UIImage(named: "qrScan-fill"))
+        niftiFriendVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "friends"), selectedImage: UIImage(named: "friends-fill"))
+        niftiSettingsVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "settings"), selectedImage: UIImage(named: "settings-fill"))
         
         
-        self.viewControllers = [niftiQrVC, niftiScanVC, niftiPetVC, niftiFriendVC]
+        self.viewControllers = [niftiQrVC, niftiScanVC, niftiPetVC, niftiFriendVC, niftiSettingsVC]
     }
 
 }
