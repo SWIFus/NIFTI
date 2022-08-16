@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5D30779328A60F46005E6D3D /* ReaderVIew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5D30779228A60F46005E6D3D /* ReaderVIew.swift */; };
 		5DBDE0A1289E4B4F0088D535 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBDE0A0289E4B4F0088D535 /* AppDelegate.swift */; };
 		5DBDE0A3289E4B4F0088D535 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBDE0A2289E4B4F0088D535 /* SceneDelegate.swift */; };
 		5DBDE0A5289E4B4F0088D535 /* QRCodeScannerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5DBDE0A4289E4B4F0088D535 /* QRCodeScannerViewController.swift */; };
@@ -36,6 +37,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5D30779228A60F46005E6D3D /* ReaderVIew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderVIew.swift; sourceTree = "<group>"; };
 		5DBDE09D289E4B4F0088D535 /* QRCodeScanner2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QRCodeScanner2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5DBDE0A0289E4B4F0088D535 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5DBDE0A2289E4B4F0088D535 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -106,6 +108,7 @@
 				5DBDE0A9289E4B510088D535 /* Assets.xcassets */,
 				5DBDE0AB289E4B510088D535 /* LaunchScreen.storyboard */,
 				5DBDE0AE289E4B510088D535 /* Info.plist */,
+				5D30779228A60F46005E6D3D /* ReaderVIew.swift */,
 			);
 			path = QRCodeScanner2;
 			sourceTree = "<group>";
@@ -143,6 +146,8 @@
 			dependencies = (
 			);
 			name = QRCodeScanner2;
+			packageProductDependencies = (
+			);
 			productName = QRCodeScanner2;
 			productReference = 5DBDE09D289E4B4F0088D535 /* QRCodeScanner2.app */;
 			productType = "com.apple.product-type.application";
@@ -215,6 +220,9 @@
 				Base,
 			);
 			mainGroup = 5DBDE094289E4B4F0088D535;
+			packageReferences = (
+				5D30778F28A6033C005E6D3D /* XCRemoteSwiftPackageReference "QRCodeReader" */,
+			);
 			productRefGroup = 5DBDE09E289E4B4F0088D535 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -259,6 +267,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5DBDE0A5289E4B4F0088D535 /* QRCodeScannerViewController.swift in Sources */,
+				5D30779328A60F46005E6D3D /* ReaderVIew.swift in Sources */,
 				5DBDE0A1289E4B4F0088D535 /* AppDelegate.swift in Sources */,
 				5DBDE0A3289E4B4F0088D535 /* SceneDelegate.swift in Sources */,
 			);
@@ -437,7 +446,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7TYL7A6LG8;
+				DEVELOPMENT_TEAM = UKZF3A6P2B;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QRCodeScanner2/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -465,7 +474,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 7TYL7A6LG8;
+				DEVELOPMENT_TEAM = UKZF3A6P2B;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = QRCodeScanner2/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -602,6 +611,17 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		5D30778F28A6033C005E6D3D /* XCRemoteSwiftPackageReference "QRCodeReader" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yannickl/QRCodeReader.swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
 	};
 	rootObject = 5DBDE095289E4B4F0088D535 /* Project object */;
 }
