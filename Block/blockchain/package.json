@@ -1,10 +1,11 @@
 {
+  "type": "module",
   "name": "typechain",
   "version": "1.0.0",
   "description": "",
   "scripts": {
     "build": "tsc",
-    "start": "node build/newblock.js"
+    "start": "node build/block.js"
   },
   "keywords": [],
   "author": "",
