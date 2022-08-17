@@ -27,7 +27,7 @@ class NiftiQrViewController: UIViewController {
     let commingSoonLabel: UILabel = {
         let commingSoon = UILabel()
         
-        commingSoon.backgroundColor = .red
+//        commingSoon.backgroundColor = .red
         commingSoon.textColor = UIColor(red: 0.121, green: 0.121, blue: 0.121, alpha: 1)
         commingSoon.font = .systemFont(ofSize: 15)
         

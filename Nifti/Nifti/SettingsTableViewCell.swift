@@ -14,7 +14,7 @@ class SettingsTableViewCell: UITableViewCell {
         let view = UIView()
         
         view.clipsToBounds = true
-        view.layer.cornerRadius = 10
+        view.layer.cornerRadius = 8
         view.layer.masksToBounds = true
         
         return view
@@ -31,6 +31,7 @@ class SettingsTableViewCell: UITableViewCell {
     
     let label: UILabel = {
         let label = UILabel()
+//        label.backgroundColor = UIColor(red: 0.121, green: 0.121, blue: 0.121, alpha: 1)
         label.numberOfLines = 1
         return label
     }()
@@ -51,19 +52,23 @@ class SettingsTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+//        self.iconContainer.backgroundColor = UIColor(red: 0.121, green: 0.121, blue: 0.121, alpha: 1)
         let size: CGFloat = contentView.frame.size.height - 12
-        iconContainer.frame = CGRect(x: 10, y: 6, width: size, height: size)
+        iconContainer.frame = CGRect(x: 15, y: 6, width: size, height: size)
         
         let imageSize: CGFloat = size/1.5
-        iconImageView.frame = CGRect(x: 0, y: 0, width: imageSize, height: imageSize)
-        iconImageView.center = iconContainer.center
+        iconImageView.frame = CGRect(x: (size - imageSize)/2, y: (size - imageSize)/2, width: imageSize, height: imageSize)
+//        iconImageView.center = iconContainer.center
         
         label.frame = CGRect(
-            x: 15+iconContainer.frame.size.width,
+            x: 25 + iconContainer.frame.size.width,
             y: 0,
-            width: contentView.frame.size.width - 15 - iconContainer.frame.size.width,
+            width: contentView.frame.size.width - 20 - iconContainer.frame.size.width,
             height: contentView.frame.size.height
         )
+        
+//        label.backgroundColor = UIColor(red: 0.121, green: 0.121, blue: 0.121, alpha: 1)
+//        label.textColor = .white
     }
     
     override func prepareForReuse() {
