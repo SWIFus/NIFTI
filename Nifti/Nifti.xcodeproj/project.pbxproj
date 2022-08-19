@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		24316FCF28AA4DF40061BB4E /* NiftiScanViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24316FCE28AA4DF30061BB4E /* NiftiScanViewController.swift */; };
 		24316FD128AA4ED50061BB4E /* QrReaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24316FD028AA4ED50061BB4E /* QrReaderView.swift */; };
+		24316FD328AA71E20061BB4E /* NiftiFriendViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24316FD228AA71E20061BB4E /* NiftiFriendViewController.swift */; };
+		24316FD728AC09180061BB4E /* FriendsCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24316FD628AC09180061BB4E /* FriendsCollectionViewFlowLayout.swift */; };
+		24316FD928AC0D8E0061BB4E /* FriendsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24316FD828AC0D8E0061BB4E /* FriendsCell.swift */; };
+		24316FDB28AC1D2F0061BB4E /* NiftiSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24316FDA28AC1D2F0061BB4E /* NiftiSettingsViewController.swift */; };
+		24316FDD28AC35640061BB4E /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24316FDC28AC35640061BB4E /* SettingsTableViewCell.swift */; };
+		24316FE128AD3FBA0061BB4E /* NiftiSettingsNavigationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24316FE028AD3FBA0061BB4E /* NiftiSettingsNavigationViewController.swift */; };
 		249152B4289F9C1900211D08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249152B3289F9C1900211D08 /* AppDelegate.swift */; };
 		249152B6289F9C1900211D08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249152B5289F9C1900211D08 /* SceneDelegate.swift */; };
 		249152B8289F9C1900211D08 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249152B7289F9C1900211D08 /* StartViewController.swift */; };
@@ -24,6 +30,12 @@
 /* Begin PBXFileReference section */
 		24316FCE28AA4DF30061BB4E /* NiftiScanViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiftiScanViewController.swift; sourceTree = "<group>"; };
 		24316FD028AA4ED50061BB4E /* QrReaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QrReaderView.swift; sourceTree = "<group>"; };
+		24316FD228AA71E20061BB4E /* NiftiFriendViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiftiFriendViewController.swift; sourceTree = "<group>"; };
+		24316FD628AC09180061BB4E /* FriendsCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		24316FD828AC0D8E0061BB4E /* FriendsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FriendsCell.swift; sourceTree = "<group>"; };
+		24316FDA28AC1D2F0061BB4E /* NiftiSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiftiSettingsViewController.swift; sourceTree = "<group>"; };
+		24316FDC28AC35640061BB4E /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		24316FE028AD3FBA0061BB4E /* NiftiSettingsNavigationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiftiSettingsNavigationViewController.swift; sourceTree = "<group>"; };
 		249152B0289F9C1900211D08 /* Nifti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nifti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		249152B3289F9C1900211D08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		249152B5289F9C1900211D08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -73,15 +85,21 @@
 				249152B3289F9C1900211D08 /* AppDelegate.swift */,
 				249152B5289F9C1900211D08 /* SceneDelegate.swift */,
 				249152B7289F9C1900211D08 /* StartViewController.swift */,
-				24A84E5A28A8E66700C96899 /* NiftiPetViewController.swift */,
 				249152E928A2462100211D08 /* NiftiQrViewController.swift */,
 				24316FCE28AA4DF30061BB4E /* NiftiScanViewController.swift */,
+				24A84E5A28A8E66700C96899 /* NiftiPetViewController.swift */,
+				24316FD228AA71E20061BB4E /* NiftiFriendViewController.swift */,
+				24316FDA28AC1D2F0061BB4E /* NiftiSettingsViewController.swift */,
+				24316FE028AD3FBA0061BB4E /* NiftiSettingsNavigationViewController.swift */,
 				24A84E3028A6120E00C96899 /* ExtensionUtil.swift */,
 				249152BC289F9C1B00211D08 /* Assets.xcassets */,
 				249152BE289F9C1B00211D08 /* LaunchScreen.storyboard */,
 				249152C1289F9C1B00211D08 /* Info.plist */,
 				24A84E5828A7FE5C00C96899 /* NiftiTabBarController.swift */,
 				24316FD028AA4ED50061BB4E /* QrReaderView.swift */,
+				24316FD628AC09180061BB4E /* FriendsCollectionViewFlowLayout.swift */,
+				24316FD828AC0D8E0061BB4E /* FriendsCell.swift */,
+				24316FDC28AC35640061BB4E /* SettingsTableViewCell.swift */,
 			);
 			path = Nifti;
 			sourceTree = "<group>";
@@ -165,10 +183,16 @@
 				24316FD128AA4ED50061BB4E /* QrReaderView.swift in Sources */,
 				249152B8289F9C1900211D08 /* StartViewController.swift in Sources */,
 				249152B4289F9C1900211D08 /* AppDelegate.swift in Sources */,
+				24316FD728AC09180061BB4E /* FriendsCollectionViewFlowLayout.swift in Sources */,
+				24316FDD28AC35640061BB4E /* SettingsTableViewCell.swift in Sources */,
+				24316FE128AD3FBA0061BB4E /* NiftiSettingsNavigationViewController.swift in Sources */,
+				24316FD328AA71E20061BB4E /* NiftiFriendViewController.swift in Sources */,
 				24A84E5928A7FE5C00C96899 /* NiftiTabBarController.swift in Sources */,
 				249152EA28A2462100211D08 /* NiftiQrViewController.swift in Sources */,
+				24316FD928AC0D8E0061BB4E /* FriendsCell.swift in Sources */,
 				24A84E5B28A8E66700C96899 /* NiftiPetViewController.swift in Sources */,
 				249152B6289F9C1900211D08 /* SceneDelegate.swift in Sources */,
+				24316FDB28AC1D2F0061BB4E /* NiftiSettingsViewController.swift in Sources */,
 				24316FCF28AA4DF40061BB4E /* NiftiScanViewController.swift in Sources */,
 				24A84E3128A6120E00C96899 /* ExtensionUtil.swift in Sources */,
 			);

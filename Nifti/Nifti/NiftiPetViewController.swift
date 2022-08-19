@@ -28,6 +28,22 @@ class NiftiPetViewController: UIViewController {
         
         return petSquare
     }()
+    
+    let petImageView: UIImageView = {
+        let petImage = UIImageView.init(image: UIImage(named: "dongri-circle-default.png"))
+        
+        petImage.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
+        petImage.contentMode = .scaleAspectFit
+        
+//        petImage.layer.masksToBounds = false
+//        petImage.layer.shadowColor = UIColor.black.cgColor
+//        petImage.layer.shadowOffset = CGSize(width: 0, height: 20)
+//        petImage.layer.shadowOpacity = 0.8
+//        petImage.layer.shadowRadius = 5.0
+        
+        return petImage
+        
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,9 +59,11 @@ class NiftiPetViewController: UIViewController {
     
     func setAutoLayouts() {
         self.view.addSubview(petSquareView)
+        self.view.addSubview(petImageView)
         
         
         petSquareViewAutoLayout()
+        petImageViewAutoLayout()
         
     }
     
@@ -66,5 +84,21 @@ extension NiftiPetViewController {
         ]
         
         NSLayoutConstraint.activate(petSquareViewConstraints)
+    }
+    
+    func petImageViewAutoLayout() {
+        petImageView.translatesAutoresizingMaskIntoConstraints = false
+        
+        let petImageViewConstraints = [
+            // set width & height anchors
+            petImageView.widthAnchor.constraint(equalToConstant: 150),
+            petImageView.heightAnchor.constraint(equalToConstant: 150),
+            
+            // set other anchors
+            petImageView.centerXAnchor.constraint(equalTo: self.petSquareView.centerXAnchor),
+            petImageView.centerYAnchor.constraint(equalTo: self.petSquareView.centerYAnchor)
+        ]
+        
+        NSLayoutConstraint.activate(petImageViewConstraints)
     }
 }
