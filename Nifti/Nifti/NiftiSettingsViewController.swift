@@ -7,110 +7,163 @@
 
 import UIKit
 
-struct Section {
-    let title: String
-    let options: [SettingsOption]
-}
+class NiftiSettingsViewController: UIViewController {
 
-struct SettingsOption {
-    let title: String
-    let icon: UIImage?
-    let iconBackgroundColor: UIColor
-    let handler: ((()-> Void))
-}
-
-class NiftiSettingsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+    let table = UITableView()
     
-    let tableView: UITableView = {
-        let table = UITableView(frame: .zero, style: .grouped)
-        
-        table.backgroundColor = UIColor(red: 0.121, green: 0.121, blue: 0.121, alpha: 1)
-        
-        table.register(SettingsTableViewCell.self, forCellReuseIdentifier: SettingsTableViewCell.identifier)
-        
-        return table
-    }()
+    let tableHeaderView = SettingsHeaderView()
     
-    var models = [Section]()
+    let testArray = ["a", "b", "c", "d", "e", "a", "b", "c", "d", "e"]
+    let testArray2 = ["1", "2", "3", "4", "5", "6", "7"]
+    
+//    struct Sect {
+//        let name: String
+//    }
+//
+//
+//    let sect: [Sect] = [Sect(name: "안녕"),
+//                        Sect(name: "하세요"),
+//                        Sect(name: "저는"),
+//                        Sect(name: "동물의숲을합니다") ]
+//
+//    let sect2: [Sect] = [Sect(name: "안녕"),
+//                         Sect(name: "하세요"),
+//                         Sect(name: "저는"),
+//                         Sect(name: "포켓몬을합니다") ]
+    
+    class Sect {
+        init(items: [String], header: String? = nil) {
+            self.items = items
+            self.header = header
+        }
+        
+        let items: [String]
+        let header: String?
+    }
 
+    
+    let sect: [Sect] = [
+        Sect(items: ["a", "b", "c", "d", "e", "a", "b", "c", "d", "e"], header: "Alphabets"),
+        Sect(items: ["1", "2", "3", "4", "5", "6", "7", "1", "2", "3", "4", "5", "6", "7"], header: "Numbers")
+    ]
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-//        self.present(UINavigationController(rootViewController: NiftiSettingsViewController()), animated:true, completion: nil)
-        navigationItem.title = "Settings"
-//        self.view.backgroundColor = UIColor(red: 0.121, green: 0.121, blue: 0.121, alpha: 1)
-        configure()
         
-        view.addSubview(tableView)
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.frame = view.bounds
+        attribute()
+        layout()
+        
+    }
+    
+    func attribute() {
+        table.register(SettingsTableViewCell.self, forCellReuseIdentifier: SettingsTableViewCell.cellID)
+        table.delegate = self
+        table.dataSource = self
+        tableHeaderView.backgroundColor = UIColor(red: 0.121, green: 0.121, blue: 0.121, alpha: 1)
+    }
+    
+    func layout() {
+        view.addSubview(table)
+        view.backgroundColor = UIColor(red: 0.121, green: 0.121, blue: 0.121, alpha: 1)
+        table.separatorColor = .white
+        table.backgroundColor = UIColor(red: 0.121, green: 0.121, blue: 0.121, alpha: 1)
+        
+        
+        setTableAutoLayout()
+        headerViewLayout()
+        setHeaderViewContent()
+    }
+    
+    func setTableAutoLayout() {
+        table.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            table.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            table.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            table.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            table.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+        ])
+    }
+    
+    func headerViewLayout() {
+        tableHeaderView.frame = CGRect(x: 0, y: 0, width: view.bounds.width, height: 50)
+    }
+    
+    func setHeaderViewContent() {
+        tableHeaderView.setText("Settings")
+        table.tableHeaderView = tableHeaderView
+    }
+    
+//    func setHeader() {
+//        let header = UIView(frame: CGRect(x: 0, y: 0, width: self.table.frame.size.width, height: 100))
+//
+//        header.backgroundColor = .systemGreen
+//        header.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            header.heightAnchor.constraint(equalToConstant: 100),
+//            header.widthAnchor.constraint(equalToConstant: self.view.frame.size.width),
+//        ])
+//
+//        table.tableHeaderView = header
+//
+//        let headerLabel = UILabel(frame: header.bounds)
+//        headerLabel.text = "This is Header View"
+//        headerLabel.textColor = .systemOrange
+//        headerLabel.textAlignment = .center
+//
+//        headerLabel.translatesAutoresizingMaskIntoConstraints = false
+//        NSLayoutConstraint.activate([
+//            headerLabel.heightAnchor.constraint(equalToConstant: table.frame.size.height*0.2),
+//            headerLabel.widthAnchor.constraint(equalToConstant: table.frame.size.width/2),
+//            headerLabel.centerXAnchor.constraint(equalTo: table.centerXAnchor),
+//            headerLabel.topAnchor.constraint(equalTo: table.topAnchor),
+//        ])
+//
+//        header.addSubview(headerLabel)
+//        table.tableHeaderView = header //
+//    }
 
-        
 
+}
+
+extension NiftiSettingsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        table.deselectRow(at: indexPath, animated: true)
     }
-    
-    func configure() {
-        models.append(Section(title: "보안", options: [
-            SettingsOption(title: "비밀번호 설정", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemPink) {
-                print("Tapped 비밀번호 설정")
-            },
-            SettingsOption(title: "비공개 설정", icon: UIImage(systemName: "bluetooth"), iconBackgroundColor: .link) {
-                print("Tapped 비공개 설정")
-            },
-            SettingsOption(title: "고객 센터", icon: UIImage(systemName: "airplane"), iconBackgroundColor: .systemGreen) {
-                print("Tapped 고객 센터")
-            },
-        ]))
-        
-        models.append(Section(title: "계정", options: [
-            SettingsOption(title: "Repair Code", icon: UIImage(systemName: "house"), iconBackgroundColor: .systemPink) {
-                print("Tapped Repair Code")
-            },
-            SettingsOption(title: "로그아웃", icon: UIImage(systemName: "bluetooth"), iconBackgroundColor: .link) {
-                print("Tapped 로그아웃")
-            },
-            SettingsOption(title: "계정 탈퇴", icon: UIImage(systemName: "airplane"), iconBackgroundColor: .systemGreen) {
-                print("Tapped 계정 탈퇴")
-            },
-        ]))
-        
-        models.append(Section(title: " ", options: [
-            SettingsOption(title: "개인 정보 보호 관련 안내", icon: UIImage(systemName: "key"), iconBackgroundColor: .systemPink) {
-                print("Tapped 개인 정보 보호 관련 안내")
-            },
-        ]))
-    }
-    
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let section = models[section]
-        return section.title
-    }
-    
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return models.count
-    }
-    
+}
+
+
+
+extension NiftiSettingsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return models[section].options.count
+        return sect[section].items.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let model = models[indexPath.section].options[indexPath.row]
-        guard let cell = tableView.dequeueReusableCell(
-            withIdentifier: SettingsTableViewCell.identifier,
-            for: indexPath
-        ) as? SettingsTableViewCell else {
-            return UITableViewCell()
-        }
+        let cell = table.dequeueReusableCell(withIdentifier: SettingsTableViewCell.cellID, for: indexPath) as! SettingsTableViewCell
         
-        cell.configure(with: model)
+//        cell.nameLabel.text = sect[indexPath.row].name
+        cell.nameLabel.text = sect[indexPath.section].items[indexPath.row] //
+        cell.nameLabel.textColor = .white
+        cell.backgroundColor = UIColor(red: 0.121, green: 0.121, blue: 0.121, alpha: 1)
+        
         return cell
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-        let model = models[indexPath.section].options[indexPath.row]
-        model.handler()
+    func numberOfSections(in tableView: UITableView) -> Int {
+        sect.count
+    }
+    
+    // section header
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 30
     }
 
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return sect[section].header
+    }
+
+    
 }

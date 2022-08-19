@@ -8,80 +8,30 @@
 import UIKit
 
 class SettingsTableViewCell: UITableViewCell {
-    static let identifier = "SettingsTableViewCell"
     
-    let iconContainer: UIView = {
-        let view = UIView()
-        
-        view.clipsToBounds = true
-        view.layer.cornerRadius = 8
-        view.layer.masksToBounds = true
-        
-        return view
-    }()
+    static let cellID = "CellId"
     
-    let iconImageView: UIImageView = {
-        let imageView = UIImageView()
-        
-        imageView.tintColor = .white
-        imageView.contentMode = .scaleAspectFill
-        
-        return imageView
-    }()
-    
-    let label: UILabel = {
-        let label = UILabel()
-//        label.backgroundColor = UIColor(red: 0.121, green: 0.121, blue: 0.121, alpha: 1)
-        label.numberOfLines = 1
-        return label
-    }()
-    
+    let nameLabel = UILabel()
+
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        contentView.addSubview(label)
-        contentView.addSubview(iconContainer)
-        iconContainer.addSubview(iconImageView)
-        
-        contentView.clipsToBounds = true
-        accessoryType = .disclosureIndicator
+        layout()
     }
     
     required init?(coder: NSCoder) {
-        fatalError()
+        fatalError("init(coder:) has not been implemented")
     }
     
-    override func layoutSubviews() {
-        super.layoutSubviews()
-//        self.iconContainer.backgroundColor = UIColor(red: 0.121, green: 0.121, blue: 0.121, alpha: 1)
-        let size: CGFloat = contentView.frame.size.height - 12
-        iconContainer.frame = CGRect(x: 15, y: 6, width: size, height: size)
-        
-        let imageSize: CGFloat = size/1.5
-        iconImageView.frame = CGRect(x: (size - imageSize)/2, y: (size - imageSize)/2, width: imageSize, height: imageSize)
-//        iconImageView.center = iconContainer.center
-        
-        label.frame = CGRect(
-            x: 25 + iconContainer.frame.size.width,
-            y: 0,
-            width: contentView.frame.size.width - 20 - iconContainer.frame.size.width,
-            height: contentView.frame.size.height
-        )
-        
-//        label.backgroundColor = UIColor(red: 0.121, green: 0.121, blue: 0.121, alpha: 1)
-//        label.textColor = .white
+    func layout() {
+        self.addSubview(nameLabel)
+        nameLabelAutoLayouts()
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        iconImageView.image = nil
-        label.text = nil
-        iconContainer.backgroundColor = nil
+    func nameLabelAutoLayouts() {
+        nameLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            nameLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            nameLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor)
+        ])
     }
-    
-    public func configure(with model: SettingsOption) {
-        label.text = model.title
-        iconImageView.image = model.icon
-        iconContainer.backgroundColor = model.iconBackgroundColor
-    }
-
 }
