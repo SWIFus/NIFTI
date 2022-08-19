@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  cardflipPractice
+//  SettingPractice
 //
-//  Created by BoMin on 2022/08/13.
+//  Created by BoMin on 2022/08/18.
 //
 
 import UIKit

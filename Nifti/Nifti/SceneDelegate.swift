@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         window = UIWindow(windowScene: windowScene)
         
-        let mainViewController = NiftiTabBarController() // initial VC
+        let mainViewController = StartViewController() // initial VC
         
         window?.rootViewController = mainViewController
         window?.makeKeyAndVisible()
