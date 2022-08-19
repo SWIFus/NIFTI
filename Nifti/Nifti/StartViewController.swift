@@ -12,7 +12,7 @@ class StartViewController: UIViewController, UITextFieldDelegate {
     
 //MARK: Values - to post
     var tokenValue: String = "thisistoken"
-    var nameValue: String = "thisisusername"
+    var nameValue: String = "*_thisisusername_*"
     
 //MARK: Label
     
@@ -83,11 +83,15 @@ class StartViewController: UIViewController, UITextFieldDelegate {
 //MARK: viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         setView()
         self.userNameTextField.delegate = self
         setUp()
         setUpProviderLoginView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
     }
     
 //MARK: View Settings, AutoLayouts
@@ -183,21 +187,33 @@ class StartViewController: UIViewController, UITextFieldDelegate {
 
         task.resume()
         
-        showRepairCode()
-        
+        if nameValue == "*_thisisusername_*" {
+            wrongUserName()
+        } else {
+            showRepairCode()
+        }
+    }
+    
+    func wrongUserName() {
+        let wrongNameAlert = UIAlertController(title: "Username not available.", message: "Please write it again.", preferredStyle: .alert)
+        let wrongNameAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        wrongNameAlert.addAction(wrongNameAction)
+        present(wrongNameAlert, animated: true, completion: nil)
     }
     
     func showRepairCode() {
         let repairCode = "*dummyRepairCode*"
         let repairCodeAlert = UIAlertController(title: "Your Repair Code is", message: repairCode, preferredStyle: .alert)
-        let repairCodeAction = UIAlertAction(title: "Checked", style: .default, handler: nil)
+        let repairCodeAction = UIAlertAction(title: "Checked", style: .default, handler: {(alert: UIAlertAction!) in self.showNiftiTabBarView()})
         repairCodeAlert.addAction(repairCodeAction)
         
-        present(repairCodeAlert, animated: true) {
-            let newView = NiftiTabBarController()
-            newView.modalPresentationStyle = .fullScreen //or .overFullScreen for transparency
-            self.present(newView, animated: true, completion: nil)
-        }
+        present(repairCodeAlert, animated: true, completion: nil)
+    }
+    
+    func showNiftiTabBarView() {
+        let niftiView = NiftiTabBarController()
+        niftiView.modalPresentationStyle = .fullScreen
+        self.present(niftiView, animated: true, completion: nil)
     }
 
 
