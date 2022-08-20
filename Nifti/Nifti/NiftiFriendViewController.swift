@@ -7,6 +7,37 @@
 
 import UIKit
 
+let friendsImageSet = [
+    UIImage(named: "dongri-black"),
+    UIImage(named: "dongri-green"),
+    UIImage(named: "dongri-yellow"),
+    UIImage(named: "dongri-red"),
+    UIImage(named: "neimo-black"),
+    UIImage(named: "neimo-green"),
+    UIImage(named: "neimo-yellow"),
+    UIImage(named: "neimo-red"),
+    UIImage(named: "dongri-black"),
+    UIImage(named: "dongri-green"),
+    UIImage(named: "dongri-yellow"),
+    UIImage(named: "dongri-red"),
+    UIImage(named: "neimo-black"),
+    UIImage(named: "neimo-green"),
+    UIImage(named: "neimo-yellow"),
+    UIImage(named: "neimo-red")
+]
+
+let friendsLabel: UILabel = {
+    let friends = UILabel()
+    
+    friends.text = "Friends"
+    friends.textColor = .white
+    friends.font = .boldSystemFont(ofSize: 30)
+    
+    return friends
+}()
+
+
+
 class NiftiFriendViewController: UIViewController {
     let friendsFlowLayout: FriendsCollectionViewFlowLayout = {
         let layout = FriendsCollectionViewFlowLayout()
@@ -16,7 +47,7 @@ class NiftiFriendViewController: UIViewController {
         return layout
     }()
     
-    var dataSource = getSampleImages()
+    var dataSource = getFriendImages()
     
     lazy var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: self.friendsFlowLayout)
@@ -38,16 +69,27 @@ class NiftiFriendViewController: UIViewController {
         self.view.backgroundColor = UIColor(red: 0.121, green: 0.121, blue: 0.121, alpha: 1)
         
         self.view.addSubview(self.collectionView)
+        self.view.addSubview(friendsLabel)
+        friendsLabelAutoLayout()
         
         NSLayoutConstraint.activate([
-        self.collectionView.leftAnchor.constraint(equalTo: self.view.leftAnchor),
-        self.collectionView.rightAnchor.constraint(equalTo: self.view.rightAnchor),
+        self.collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10),
+        self.collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10),
         self.collectionView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 120),
-        self.collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor),
+        self.collectionView.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -10),
         ])
         
         self.collectionView.dataSource = self
         self.collectionView.delegate = self
+    }
+    
+    func friendsLabelAutoLayout() {
+        friendsLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            friendsLabel.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor),
+            friendsLabel.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor, constant: 20),
+            friendsLabel.bottomAnchor.constraint(equalTo: self.collectionView.topAnchor)
+        ])
     }
     
 }
@@ -75,6 +117,6 @@ extension NiftiFriendViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
-func getSampleImages() -> [UIImage?] {
-    (1...100).map { _ in return UIImage(named: "dog")}
+func getFriendImages() -> [UIImage?] {
+    friendsImageSet
 }

@@ -25,6 +25,7 @@
 		24A84E3128A6120E00C96899 /* ExtensionUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A84E3028A6120E00C96899 /* ExtensionUtil.swift */; };
 		24A84E5928A7FE5C00C96899 /* NiftiTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A84E5828A7FE5C00C96899 /* NiftiTabBarController.swift */; };
 		24A84E5B28A8E66700C96899 /* NiftiPetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24A84E5A28A8E66700C96899 /* NiftiPetViewController.swift */; };
+		24FAE5FE28B0CE9E00C923BE /* SettingsSectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24FAE5FD28B0CE9E00C923BE /* SettingsSectionHeaderView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		24A84E3028A6120E00C96899 /* ExtensionUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionUtil.swift; sourceTree = "<group>"; };
 		24A84E5828A7FE5C00C96899 /* NiftiTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiftiTabBarController.swift; sourceTree = "<group>"; };
 		24A84E5A28A8E66700C96899 /* NiftiPetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiftiPetViewController.swift; sourceTree = "<group>"; };
+		24FAE5FD28B0CE9E00C923BE /* SettingsSectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsSectionHeaderView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				24316FD828AC0D8E0061BB4E /* FriendsCell.swift */,
 				24316FDC28AC35640061BB4E /* SettingsTableViewCell.swift */,
 				2431702928AFD4EF0061BB4E /* SettingsHeaderView.swift */,
+				24FAE5FD28B0CE9E00C923BE /* SettingsSectionHeaderView.swift */,
 			);
 			path = Nifti;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 				249152B8289F9C1900211D08 /* StartViewController.swift in Sources */,
 				249152B4289F9C1900211D08 /* AppDelegate.swift in Sources */,
 				24316FD728AC09180061BB4E /* FriendsCollectionViewFlowLayout.swift in Sources */,
+				24FAE5FE28B0CE9E00C923BE /* SettingsSectionHeaderView.swift in Sources */,
 				24316FDD28AC35640061BB4E /* SettingsTableViewCell.swift in Sources */,
 				24316FD328AA71E20061BB4E /* NiftiFriendViewController.swift in Sources */,
 				24A84E5928A7FE5C00C96899 /* NiftiTabBarController.swift in Sources */,

@@ -14,11 +14,11 @@ class QRCodeMakerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = .white
+        self.view.backgroundColor = UIColor.systemBlue
         
-        var qrCode = QRCode(string: "www.google.com")
-        qrCode!.color = UIColor.black
-        qrCode!.backgroundColor = UIColor.white
+        var qrCode = QRCode(string: "Welcom to the New Era, NIFTI")
+        qrCode!.color = UIColor(red: 0.121, green: 0.121, blue: 0.121, alpha: 1)
+        qrCode!.backgroundColor = UIColor.systemBlue
         qrCode!.size = CGSize(width: 200, height: 200)
         qrCode!.scale = 1.0
         qrCode!.inputCorrection = .quartile

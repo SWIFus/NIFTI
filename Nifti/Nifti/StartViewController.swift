@@ -11,8 +11,11 @@ import AuthenticationServices
 class StartViewController: UIViewController, UITextFieldDelegate {
     
 //MARK: Values - to post
-    var tokenValue: String = "thisistoken"
-    var nameValue: String = "*_thisisusername_*"
+    
+    struct PostValues {
+        static var tokenValue: String = "thisistoken"
+        static var nameValue: String = "*_thisisusername_*"
+    }
     
 //MARK: Label
     
@@ -145,7 +148,7 @@ class StartViewController: UIViewController, UITextFieldDelegate {
     
     
     @objc func handleSubmitButtonPress() {
-        print("\(tokenValue)\n\(nameValue)\n")
+        print("\(PostValues.tokenValue)\n\(PostValues.nameValue)\n")
         
         // post
         guard let url = URL(string: "https://ptsv2.com/t/7mp8f-1660891929/post") else {
@@ -157,8 +160,8 @@ class StartViewController: UIViewController, UITextFieldDelegate {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "POST"
         let postingParams: [String: Any] = [
-            "token": tokenValue,
-            "name": nameValue
+            "token": PostValues.tokenValue,
+            "name": PostValues.nameValue
         ]
         
         let data = try? JSONSerialization.data(withJSONObject: postingParams)
@@ -187,7 +190,7 @@ class StartViewController: UIViewController, UITextFieldDelegate {
 
         task.resume()
         
-        if nameValue == "*_thisisusername_*" {
+        if PostValues.nameValue == "*_thisisusername_*" {
             wrongUserName()
         } else {
             showRepairCode()
@@ -202,7 +205,7 @@ class StartViewController: UIViewController, UITextFieldDelegate {
     }
     
     func showRepairCode() {
-        let repairCode = "*dummyRepairCode*"
+        let repairCode = "016af2c73e2aa364dd" //repair code
         let repairCodeAlert = UIAlertController(title: "Your Repair Code is", message: repairCode, preferredStyle: .alert)
         let repairCodeAction = UIAlertAction(title: "Checked", style: .default, handler: {(alert: UIAlertAction!) in self.showNiftiTabBarView()})
         repairCodeAlert.addAction(repairCodeAction)
@@ -277,7 +280,7 @@ extension StartViewController: ASAuthorizationControllerDelegate {
     func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
         if let appleIDCredential =  authorization.credential as? ASAuthorizationAppleIDCredential {
             let userIdentifier = appleIDCredential.user
-            tokenValue = userIdentifier
+            PostValues.tokenValue = userIdentifier
             print("USER IDENTIFIER:\n\n\(userIdentifier)\n\n-----\n\n")
             
         }
@@ -305,7 +308,7 @@ extension StartViewController {
     }
 
     func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
-        nameValue = userNameTextField.text ?? "thisisName"
+        PostValues.nameValue = userNameTextField.text ?? "thisisName"
     }
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {

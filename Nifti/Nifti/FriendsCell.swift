@@ -12,11 +12,11 @@ final class FriendsCell: UICollectionViewCell {
     
     let imageView: UIImageView = {
         let view = UIImageView()
-        view.contentMode = .scaleAspectFill
+        view.contentMode = .scaleAspectFit
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.masksToBounds = false
         view.layer.cornerRadius = 60
-        view.clipsToBounds = true
+        view.clipsToBounds = false
         return view
     }()
     
