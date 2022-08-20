@@ -25,11 +25,11 @@ class ViewController: UIViewController {
          Sect(name: "하세요"),
          Sect(name: "저는"),
          Sect(name: "동물의숲을합니다") ],
-
-        [Sect(name: "안녕"),
-         Sect(name: "하세요"),
-         Sect(name: "저는"),
-         Sect(name: "포켓몬을합니다") ]
+//
+//        [Sect(name: "안녕"),
+//         Sect(name: "하세요"),
+//         Sect(name: "저는"),
+//         Sect(name: "포켓몬을합니다") ]
     ]
     
     override func viewDidLoad() {
