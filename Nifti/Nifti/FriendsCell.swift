@@ -8,16 +8,27 @@
 import UIKit
 
 final class FriendsCell: UICollectionViewCell {
-    static let id = "FriendsCell"
+    static let identifier = "FriendsCell"
     
     let imageView: UIImageView = {
         let view = UIImageView()
         view.contentMode = .scaleAspectFit
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.layer.masksToBounds = false
-        view.layer.cornerRadius = 60
-        view.clipsToBounds = false
+        view.layer.masksToBounds = true
+        view.layer.cornerRadius = 45
+        view.clipsToBounds = true
         return view
+    }()
+    
+    let friendNameLabel: UILabel = {
+        let namelabel = UILabel()
+        namelabel.backgroundColor = .red
+        namelabel.textColor = .white
+        namelabel.font = .systemFont(ofSize: 5)
+        namelabel.numberOfLines = 1
+        namelabel.textAlignment = .center
+        namelabel.translatesAutoresizingMaskIntoConstraints = false
+        return namelabel
     }()
     
     @available(*, unavailable)
@@ -29,22 +40,30 @@ final class FriendsCell: UICollectionViewCell {
         super.init(frame: frame)
         
         self.contentView.addSubview(self.imageView)
+        self.contentView.addSubview(self.friendNameLabel)
         NSLayoutConstraint.activate([
-            self.imageView.leftAnchor.constraint(equalTo: self.contentView.leftAnchor),
-            self.imageView.rightAnchor.constraint(equalTo: self.contentView.rightAnchor),
-            self.imageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
             self.imageView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+            self.imageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -15),
+            self.imageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 7.5),
+            self.imageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -7.5),
+//
+            self.friendNameLabel.topAnchor.constraint(equalTo: self.imageView.bottomAnchor, constant: 2),
+            self.friendNameLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
+            self.friendNameLabel.widthAnchor.constraint(equalToConstant: self.imageView.bounds.width),
+            self.friendNameLabel.centerXAnchor.constraint(equalTo: self.imageView.centerXAnchor),
+//            self.friendNameLabel.heightAnchor.constraint(equalToConstant: 10),
         ])
     }
     
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        self.prepare(image: nil)
+        self.prepare(image: nil, name: nil)
     }
     
-    func prepare(image: UIImage?) {
+    func prepare(image: UIImage?, name: String?) {
         self.imageView.image = image
+        self.friendNameLabel.text = name
     }
     
 }

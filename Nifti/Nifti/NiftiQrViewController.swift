@@ -16,7 +16,7 @@ class NiftiQrViewController: UIViewController {
         
 //        username.frame = CGRect(x: 0, y: 0, width: 137, height: 20)
         username.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-        username.font = .boldSystemFont(ofSize: 20)
+        username.font = .boldSystemFont(ofSize: 25)
         username.numberOfLines = 2
         
         username.text = "Hello, \(StartViewController.PostValues.nameValue) !\nWelcome to NIFTI"
@@ -30,9 +30,10 @@ class NiftiQrViewController: UIViewController {
         
 //        commingSoon.backgroundColor = .red
         commingSoon.textColor = UIColor(red: 0.121, green: 0.121, blue: 0.121, alpha: 0.8)
-        commingSoon.font = .systemFont(ofSize: 15)
+        commingSoon.font = .boldSystemFont(ofSize: 20)
+        commingSoon.numberOfLines = 3
         
-        commingSoon.text = "Comming Soon"
+        commingSoon.text = "🌐 Nifti SNS\n\n💬 Nifti Chat"
         commingSoon.textAlignment = .center
         
         return commingSoon
@@ -64,7 +65,7 @@ class NiftiQrViewController: UIViewController {
     }()
     
     let qrCodeImageView: UIImageView = {
-        var qrCode = QRCode(string: "WE ARE NIFTI!")
+        var qrCode = QRCode(string: "www.google.com")
         
         qrCode!.color = .black
 
@@ -82,7 +83,7 @@ class NiftiQrViewController: UIViewController {
     let connectToApps: UIView = {
         let connect = UIView()
         
-        connect.frame = CGRect(x: 0, y: 0, width: 320, height: 280)
+        connect.frame = CGRect(x: 0, y: 0, width: 320, height: 250)
         connect.backgroundColor = .white
         connect.layer.backgroundColor = UIColor(red: 0.882, green: 0.863, blue: 0.851, alpha: 1).cgColor
         connect.layer.cornerRadius = 40
@@ -183,7 +184,7 @@ extension NiftiQrViewController {
         
         // set width & height anchors
         connectToApps.widthAnchor.constraint(equalToConstant: self.view.frame.size.width * 0.8).isActive = true
-        connectToApps.heightAnchor.constraint(equalToConstant: self.view.frame.size.height * 0.3).isActive = true
+        connectToApps.heightAnchor.constraint(equalToConstant: self.view.frame.size.height * 0.28).isActive = true
         
         // set other anchors
         connectToApps.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
@@ -196,8 +197,8 @@ extension NiftiQrViewController {
         
         let commingSoonLabelConstraints = [
             // set width & height anchors
-            commingSoonLabel.widthAnchor.constraint(equalToConstant: self.connectToApps.frame.size.width * 0.8),
-            commingSoonLabel.heightAnchor.constraint(equalToConstant: self.connectToApps.frame.size.height * 0.2),
+            commingSoonLabel.widthAnchor.constraint(equalToConstant: self.connectToApps.frame.size.width),
+            commingSoonLabel.heightAnchor.constraint(equalToConstant: self.connectToApps.frame.size.height),
             
             // set other anchors
             commingSoonLabel.centerXAnchor.constraint(equalTo: self.connectToApps.centerXAnchor),

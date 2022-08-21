@@ -17,6 +17,8 @@ class StartViewController: UIViewController, UITextFieldDelegate {
         static var nameValue: String = "*_thisisusername_*"
     }
     
+    static var repairKey: String = "016af2c73e2aa364dd"
+    
 //MARK: Label
     
 //MARK: View
@@ -205,7 +207,7 @@ class StartViewController: UIViewController, UITextFieldDelegate {
     }
     
     func showRepairCode() {
-        let repairCode = "016af2c73e2aa364dd" //repair code
+        let repairCode = StartViewController.repairKey //repair code
         let repairCodeAlert = UIAlertController(title: "Your Repair Code is", message: repairCode, preferredStyle: .alert)
         let repairCodeAction = UIAlertAction(title: "Checked", style: .default, handler: {(alert: UIAlertAction!) in self.showNiftiTabBarView()})
         repairCodeAlert.addAction(repairCodeAction)

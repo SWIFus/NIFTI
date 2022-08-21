@@ -8,22 +8,17 @@
 import UIKit
 
 let friendsImageSet = [
-    UIImage(named: "dongri-black"),
-    UIImage(named: "dongri-green"),
-    UIImage(named: "dongri-yellow"),
-    UIImage(named: "dongri-red"),
-    UIImage(named: "neimo-black"),
-    UIImage(named: "neimo-green"),
-    UIImage(named: "neimo-yellow"),
-    UIImage(named: "neimo-red"),
-    UIImage(named: "dongri-black"),
-    UIImage(named: "dongri-green"),
-    UIImage(named: "dongri-yellow"),
-    UIImage(named: "dongri-red"),
-    UIImage(named: "neimo-black"),
-    UIImage(named: "neimo-green"),
-    UIImage(named: "neimo-yellow"),
-    UIImage(named: "neimo-red")
+    UIImage(named: "boatocean"),
+    UIImage(named: "greenmountain"),
+    UIImage(named: "lakemountain"),
+    UIImage(named: "rock"),
+]
+
+let friendsNameSet = [
+    "zett3",
+    "chamber",
+    "xdon_mo",
+    "rwksmz"
 ]
 
 let friendsLabel: UILabel = {
@@ -47,7 +42,8 @@ class NiftiFriendViewController: UIViewController {
         return layout
     }()
     
-    var dataSource = getFriendImages()
+    var imageSource = getFriendImages()
+    var nameSource = getFriendNames()
     
     lazy var collectionView: UICollectionView = {
         let view = UICollectionView(frame: .zero, collectionViewLayout: self.friendsFlowLayout)
@@ -57,7 +53,7 @@ class NiftiFriendViewController: UIViewController {
         view.contentInset = .zero
         view.backgroundColor = UIColor(red: 0.121, green: 0.121, blue: 0.121, alpha: 1)
         view.clipsToBounds = true
-        view.register(FriendsCell.self, forCellWithReuseIdentifier: "FriendsCell")
+        view.register(FriendsCell.self, forCellWithReuseIdentifier: FriendsCell.identifier)
         view.translatesAutoresizingMaskIntoConstraints = false
         
         return view
@@ -71,7 +67,10 @@ class NiftiFriendViewController: UIViewController {
         self.view.addSubview(self.collectionView)
         self.view.addSubview(friendsLabel)
         friendsLabelAutoLayout()
-        
+        collectionViewAutoLayout()
+    }
+    
+    func collectionViewAutoLayout() {
         NSLayoutConstraint.activate([
         self.collectionView.leadingAnchor.constraint(equalTo: self.view.leadingAnchor, constant: 10),
         self.collectionView.trailingAnchor.constraint(equalTo: self.view.trailingAnchor, constant: -10),
@@ -96,11 +95,11 @@ class NiftiFriendViewController: UIViewController {
 
 extension NiftiFriendViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        self.dataSource.count
+        self.imageSource.count
     }
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FriendsCell.id, for: indexPath) as! FriendsCell
-        cell.prepare(image: self.dataSource[indexPath.item])
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FriendsCell.identifier, for: indexPath) as! FriendsCell
+        cell.prepare(image: self.imageSource[indexPath.item], name: self.nameSource[indexPath.item])
         return cell
     }
 }
@@ -119,4 +118,8 @@ extension NiftiFriendViewController: UICollectionViewDelegateFlowLayout {
 
 func getFriendImages() -> [UIImage?] {
     friendsImageSet
+}
+
+func getFriendNames() -> [String] {
+    friendsNameSet
 }

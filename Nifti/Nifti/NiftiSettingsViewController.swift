@@ -45,7 +45,7 @@ class NiftiSettingsViewController: UIViewController {
     let sect: [Sect] = [
         Sect(items: ["비밀번호 설정", "비공개 설정", "고객 센터"], header: "보안"),
         Sect(items: ["Repair Code", "로그아웃", "계정 탈퇴"], header: "계정"),
-        Sect(items: ["개인 정보 보호 관련 안내"], header: "계정"),
+        Sect(items: ["개인 정보 보호 관련 안내"], header: " "),
     ]
     
     
@@ -131,6 +131,19 @@ class NiftiSettingsViewController: UIViewController {
 extension NiftiSettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         table.deselectRow(at: indexPath, animated: true)
+        print("---\(sect[indexPath.section].items[indexPath.row])---")
+        if sect[indexPath.section].items[indexPath.row] == "Repair Code" {
+            showRepairCode()
+        }
+    }
+    
+    func showRepairCode() {
+        let repairCode = StartViewController.repairKey //repair code
+        let repairCodeAlert = UIAlertController(title: "Your Repair Code is", message: repairCode, preferredStyle: .alert)
+        let repairCodeAction = UIAlertAction(title: "Checked", style: .default, handler: nil)
+        repairCodeAlert.addAction(repairCodeAction)
+
+        present(repairCodeAlert, animated: true, completion: nil)
     }
 }
 
