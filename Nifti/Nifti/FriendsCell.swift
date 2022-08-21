@@ -15,7 +15,8 @@ final class FriendsCell: UICollectionViewCell {
         view.contentMode = .scaleAspectFit
         view.translatesAutoresizingMaskIntoConstraints = false
         view.layer.masksToBounds = true
-        view.layer.cornerRadius = 45
+//        view.layer.cornerRadius = 45
+        view.layer.cornerRadius = 50
         view.clipsToBounds = true
         return view
     }()
@@ -40,18 +41,23 @@ final class FriendsCell: UICollectionViewCell {
         super.init(frame: frame)
         
         self.contentView.addSubview(self.imageView)
-        self.contentView.addSubview(self.friendNameLabel)
+//        self.contentView.addSubview(self.friendNameLabel)
         NSLayoutConstraint.activate([
+//            self.imageView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
+//            self.imageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -15),
+//            self.imageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 7.5),
+//            self.imageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -7.5),
+            
             self.imageView.topAnchor.constraint(equalTo: self.contentView.topAnchor),
-            self.imageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor, constant: -15),
-            self.imageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor, constant: 7.5),
-            self.imageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor, constant: -7.5),
+            self.imageView.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
+            self.imageView.leadingAnchor.constraint(equalTo: self.contentView.leadingAnchor),
+            self.imageView.trailingAnchor.constraint(equalTo: self.contentView.trailingAnchor),
 //
-            self.friendNameLabel.topAnchor.constraint(equalTo: self.imageView.bottomAnchor, constant: 2),
-            self.friendNameLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
-            self.friendNameLabel.widthAnchor.constraint(equalToConstant: self.imageView.bounds.width),
-            self.friendNameLabel.centerXAnchor.constraint(equalTo: self.imageView.centerXAnchor),
-//            self.friendNameLabel.heightAnchor.constraint(equalToConstant: 10),
+//            self.friendNameLabel.topAnchor.constraint(equalTo: self.imageView.bottomAnchor, constant: 2),
+//            self.friendNameLabel.bottomAnchor.constraint(equalTo: self.contentView.bottomAnchor),
+//            self.friendNameLabel.widthAnchor.constraint(equalToConstant: self.imageView.bounds.width),
+//            self.friendNameLabel.centerXAnchor.constraint(equalTo: self.imageView.centerXAnchor),
+            
         ])
     }
     
