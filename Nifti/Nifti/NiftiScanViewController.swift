@@ -80,20 +80,21 @@ extension NiftiScanViewController: QrReaderViewDelegate {
         switch status {
         case let .success(code):
             guard let code = code else {
-                title = "에러"
-                message = "QR코드 or 바코드를 인식하지 못했습니다.\n다시 시도해주세요."
+                title = "Error"
+                message = "QR Code not found.\nPlease try again."
                 break
             }
 
-            title = "알림"
-            message = "인식성공\n\(code)"
+            title = "Notice"
+//            message = "Success!\n\(code)"
+            message = "인식 성공!\n친구가 추가되었습니다."
         case .fail:
-            title = "에러"
-            message = "QR코드 or 바코드를 인식하지 못했습니다.\n다시 시도해주세요."
+            title = "Error"
+            message = "QR Code not found.\nPlease try again."
         case let .stop(isButtonTap):
             if isButtonTap {
-                title = "알림"
-                message = "바코드 읽기를 멈추었습니다."
+                title = "Notice"
+                message = "Scanning stopped."
                 self.readButton.isSelected = qrReaderView.isRunning
             } else {
                 self.readButton.isSelected = qrReaderView.isRunning

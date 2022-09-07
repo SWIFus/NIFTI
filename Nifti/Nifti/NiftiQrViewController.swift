@@ -14,14 +14,29 @@ class NiftiQrViewController: UIViewController {
     let usernameLabel: UILabel = {
         let username = UILabel()
         
-        username.frame = CGRect(x: 0, y: 0, width: 137, height: 20)
+//        username.frame = CGRect(x: 0, y: 0, width: 137, height: 20)
         username.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-        username.font = .systemFont(ofSize: 15)
+        username.font = .boldSystemFont(ofSize: 25)
+        username.numberOfLines = 2
         
-        username.text = "USER_NIFTI"
+        username.text = "Hello, \(StartViewController.PostValues.nameValue) !\nWelcome to NIFTI"
         username.textAlignment = .center
         
         return username
+    }()
+    
+    let commingSoonLabel: UILabel = {
+        let commingSoon = UILabel()
+        
+//        commingSoon.backgroundColor = .red
+        commingSoon.textColor = UIColor(red: 0.121, green: 0.121, blue: 0.121, alpha: 0.8)
+        commingSoon.font = .boldSystemFont(ofSize: 20)
+        commingSoon.numberOfLines = 3
+        
+        commingSoon.text = "🌐 Nifti SNS\n\n💬 Nifti Chat"
+        commingSoon.textAlignment = .center
+        
+        return commingSoon
     }()
     
 //MARK: View
@@ -68,7 +83,7 @@ class NiftiQrViewController: UIViewController {
     let connectToApps: UIView = {
         let connect = UIView()
         
-        connect.frame = CGRect(x: 0, y: 0, width: 320, height: 280)
+        connect.frame = CGRect(x: 0, y: 0, width: 320, height: 250)
         connect.backgroundColor = .white
         connect.layer.backgroundColor = UIColor(red: 0.882, green: 0.863, blue: 0.851, alpha: 1).cgColor
         connect.layer.cornerRadius = 40
@@ -97,12 +112,14 @@ class NiftiQrViewController: UIViewController {
         self.view.addSubview(usernameLabel)
         self.view.addSubview(qrCodeImageView)
         self.view.addSubview(connectToApps)
+        self.connectToApps.addSubview(commingSoonLabel)
         
         qrViewAutoLayout()
         //qrImageViewAutoLayout()
         usernameLabelAutoLayout()
         qrCodeImageViewAutoLayout()
         connectToAppsAutoLayout()
+        commingSoonLabelAutoLayout()
         
     }
 }
@@ -141,12 +158,13 @@ extension NiftiQrViewController {
         usernameLabel.translatesAutoresizingMaskIntoConstraints = false
         
         // set width & height anchors
-        usernameLabel.widthAnchor.constraint(equalToConstant: 137).isActive = true
-        usernameLabel.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        usernameLabel.leadingAnchor.constraint(equalTo: self.connectToApps.leadingAnchor).isActive = true
+        usernameLabel.trailingAnchor.constraint(equalTo: self.connectToApps.trailingAnchor).isActive = true
         
         // set other anchors
         usernameLabel.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        usernameLabel.topAnchor.constraint(equalTo: self.qrView.topAnchor, constant: 259).isActive = true
+        usernameLabel.topAnchor.constraint(equalTo: self.qrView.bottomAnchor, constant: 20).isActive = true
+//        usernameLabel.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
     }
     
     func qrCodeImageViewAutoLayout() {
@@ -165,13 +183,29 @@ extension NiftiQrViewController {
         connectToApps.translatesAutoresizingMaskIntoConstraints = false
         
         // set width & height anchors
-        connectToApps.widthAnchor.constraint(equalToConstant: 320).isActive = true
-        connectToApps.heightAnchor.constraint(equalToConstant: 280).isActive = true
+        connectToApps.widthAnchor.constraint(equalToConstant: self.view.frame.size.width * 0.8).isActive = true
+        connectToApps.heightAnchor.constraint(equalToConstant: self.view.frame.size.height * 0.28).isActive = true
         
         // set other anchors
         connectToApps.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        connectToApps.topAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
+        connectToApps.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: self.view.frame.size.height * 0.225).isActive = true
 //        connectToApps.topAnchor.
+    }
+    
+    func commingSoonLabelAutoLayout() {
+        commingSoonLabel.translatesAutoresizingMaskIntoConstraints = false
+        
+        let commingSoonLabelConstraints = [
+            // set width & height anchors
+            commingSoonLabel.widthAnchor.constraint(equalToConstant: self.connectToApps.frame.size.width),
+            commingSoonLabel.heightAnchor.constraint(equalToConstant: self.connectToApps.frame.size.height),
+            
+            // set other anchors
+            commingSoonLabel.centerXAnchor.constraint(equalTo: self.connectToApps.centerXAnchor),
+            commingSoonLabel.centerYAnchor.constraint(equalTo: self.connectToApps.centerYAnchor)
+        ]
+        
+        NSLayoutConstraint.activate(commingSoonLabelConstraints)
     }
     
 }

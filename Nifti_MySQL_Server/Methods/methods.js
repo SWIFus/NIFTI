@@ -1,8 +1,10 @@
 const {application} = require(`express`);
 const express = require('express');
+const { default: BlockChain } = require('../modules/blockchain');
 const db = require('./config/db');
 const app = express();
 
+const blockChain = new BlockChain()
 
 // SERVER START
 app.listen(3000, function () {
@@ -14,7 +16,7 @@ app.listen(3000, function () {
 app.get(`/userInfo/user`, (req, res) => {
     db.query(`SELECT * FROM user WHERE id=?;`, [req.query.id], (err, data) => {
         if (!err) {
-            res.send( {name: data[0].name, public_key: data[0].public_key, user_avatar: data[0].user_avatar, friend_list: data[0].friend_list} );
+            res.send( {chained_hash: data[0].chained_hash, name: data[0].name, token: data[0].token, user_avatar: data[0].user_avatar, friend_list: data[0].friend_list} );
         }
         else res.send(err);
     });
@@ -41,28 +43,33 @@ app.post(`/userInfo/edit`, (req, res) => { // User Avatar Change
 
 // Add New User
 app.post(`add/user/newUser`, (req, res) => {
-    db.query(`SELECT name FROM user;`, (err, data) => {
-        if (data.find(req.body.name)) {
-            res.send({ "error": "Same User Name"})
-        }
-    })
-
-    
-    const newUserInfo = giveNewUserInfo(req.body.name, Date())
-    db.query(`INSERT INTO user (?, ?, ?, ?, ?, ?, ?, ? , ?) VALUES(unchained_hash, chained_hash, created_at, name, user_avatar, friend_list, repair_key);`,
-     [], (err) => {
-         if (!err) {
-            db.query(`SELECT * FROM user WHERE chained_hash = ?`, [newUserInfo.chained_hash], (err, data) => {
-                if (!err) {
-                    res.send(data)
+    db.query(`SELECT token FROM user;`, (err, userData) => {
+        if (userData.find(req.body.token)) {
+            res.send({ "error": "Same User"})
+        } else {
+            db.query(`SELECT name FROM user;`, (err, nameData) => {
+                if (nameData.find(req.body.name)) {
+                    res.send({"error" : "Same name"})
                 } else {
-                    res.send(err)
+                    const newHashBlock = blockChain.addBlock()
+                    db.query(`INSERT INTO user (?, ?, ?, ?, ?, ?, ?, ?) VALUES(unchained_hash, chained_hash, token, created_at, name, friend_list, repair_key);`,
+                    [newHashBlock.unChained_Hash, newHashBlock.Chained_Hash, req.body.token, newHashBlock.created_at, req.body.name, " ",encodeString(req.body.name)], (err) => {
+                        if (!err) {
+                            db.query(`SELECT * FROM user WHERE chained_hash = ?`, [newUserInfo.chained_hash], (err, data) => {
+                                if (!err) {
+                                    res.send(data)
+                                } else {
+                                    res.send(err)
+                                }
+                            })
+                        } else {
+                            res.send(err)
+                        }
+                    })
                 }
             })
-         } else {
-             res.send(err)
-         }
-     })
+        }
+    })
 })
 
 
@@ -76,9 +83,13 @@ function giveNewUserInfo(name, created_at) {
 
 
 function encodeString(unencodedString) {
+    let index = 0;
+    let encodedString = "01";
+    [...unencodedString].forEach(i => {
+        encodeString += unencodedString.charCodeAt(index).toString(16);
+    });
 
-
-    return unencodedString
+    return encodedString
 }
 
 /*
