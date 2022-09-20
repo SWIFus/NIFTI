@@ -8,22 +8,22 @@
 import UIKit
 import AuthenticationServices
 
-class StartViewController: UIViewController {
+class StartViewController: UIViewController, UITextFieldDelegate {
+    
+//MARK: Values - to post
+    
+    struct PostValues {
+        static var tokenValue: String = "thisistoken"
+        static var nameValue: String = "*_thisisusername_*"
+    }
+    
+    static var repairKey: String = "016af2c73e2aa364dd"
     
 //MARK: Label
-    let test: UILabel = {
-        let testLabel = UILabel()
-        testLabel.text = "TEXT"
-        testLabel.textColor = UIColor(red: 1, green: 1, blue: 1, alpha: 1)
-        testLabel.font = .boldSystemFont(ofSize: 45)
-        
-        return testLabel
-    }()
     
 //MARK: View
     let niftiImageView: UIImageView = {
         let niftiImage = UIImageView()
-        //niftiImage.backgroundColor = .blue
         let niftiLogo: UIImage = UIImage(named: "NIFTI_White.png")!
         niftiImage.image = niftiLogo
         
@@ -33,16 +33,56 @@ class StartViewController: UIViewController {
     
     let signUpView: UIView = {
         let signUp = UIView()
-        //signUp.backgroundColor = .red
+        
+        signUp.frame = CGRect(x: 0, y: 0, width: 300, height: 100)
+        signUp.backgroundColor = UIColor(red: 0.121, green: 0.121, blue: 0.121, alpha: 1)
+        
         return signUp
     }()
     
 //MARK: Button
-    let appleLoginButton: ASAuthorizationAppleIDButton = {
-        let appleLoginBtn = ASAuthorizationAppleIDButton(type: .signUp, style: .white)
-        appleLoginBtn.addTarget(self, action: #selector(handleAppleLoginButton), for: .touchUpInside)
+    let submitButton: UIButton = {
+        let submit = UIButton()
         
-        return appleLoginBtn
+        submit.frame = CGRect(x: 0, y: 0, width: 150, height: 40)
+        
+        submit.setTitle("Start Nifti", for: .normal)
+        submit.setTitleColor(UIColor.systemBlue, for: .normal)
+        submit.setTitleColor(UIColor.systemGray, for: .highlighted)
+        
+        submit.layer.borderColor = UIColor.white.cgColor
+        submit.layer.borderWidth = 1
+        
+        submit.layer.cornerRadius = 5
+        submit.backgroundColor = .clear
+        submit.addTarget(self, action: #selector(handleSubmitButtonPress), for: .touchUpInside)
+        
+        return submit
+    }()
+    
+//MARK: TextField
+    var userNameTextField: UITextField = {
+        let userName = UITextField()
+        
+        userName.frame = CGRect(x: 0, y: 0, width: 250, height: 40)
+        
+        userName.backgroundColor = UIColor(red: 0.4, green: 0.4, blue: 0.4, alpha: 1)
+        userName.layer.masksToBounds = true
+        userName.layer.cornerRadius = 5
+        
+        userName.attributedPlaceholder = NSAttributedString(
+            string: "Enter your new virtual name",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor(red: 0.8, green: 0.8, blue: 0.8, alpha: 1)]
+        )
+        userName.font = .systemFont(ofSize: 15)
+        userName.textColor = .white
+        userName.textAlignment = .center
+        userName.autocorrectionType = .no
+        userName.keyboardType = .default
+        userName.returnKeyType = .done
+        userName.clearButtonMode = .whileEditing
+        
+        return userName
     }()
     
 //MARK: viewDidLoad
@@ -50,7 +90,13 @@ class StartViewController: UIViewController {
         super.viewDidLoad()
         
         setView()
-        setAutoLayouts()
+        self.userNameTextField.delegate = self
+        setUp()
+        setUpProviderLoginView()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
     }
     
 //MARK: View Settings, AutoLayouts
@@ -58,37 +104,128 @@ class StartViewController: UIViewController {
         view.backgroundColor = UIColor(red: 0.121, green: 0.121, blue: 0.121, alpha: 1)
     }
     
-    func setAutoLayouts() {
-        // addSubViews
-        //self.view.addSubview(test)
+    func setUp() {
+        
         self.view.addSubview(niftiImageView)
         self.view.addSubview(signUpView)
-        self.signUpView.addSubview(appleLoginButton)
+        self.view.addSubview(userNameTextField)
+        self.view.addSubview(submitButton)
         
-        // components' auto layouts
-        //testAutoLayout()
+        
+        // auto layouts
         niftiImageAutoLayout()
         signUpViewAutoLayout()
-        appleLoginAutoLayout()
+        submitButtonAutoLayout()
+        userNameTextFieldAutoLayout()
+        
+    }
+    
+//MARK: Setting Provider Login View
+    func setUpProviderLoginView() {
+        let authButton = ASAuthorizationAppleIDButton(authorizationButtonType: .signIn, authorizationButtonStyle: .black)
+        authButton.addTarget(self, action: #selector(handleAuthAppleIDButtonPress), for: .touchUpInside)
+        self.signUpView.addSubview(authButton)
+        
+        authButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            authButton.widthAnchor.constraint(equalToConstant: 250),
+            authButton.heightAnchor.constraint(equalToConstant: 40),
+            authButton.centerXAnchor.constraint(equalTo: self.signUpView.centerXAnchor),
+            authButton.centerYAnchor.constraint(equalTo: self.signUpView.centerYAnchor),
+            
+        ])
+    }
+    
+//MARK: EXTENSION: handle functions
+    @objc func handleAuthAppleIDButtonPress() {
+        let appleIDProvider = ASAuthorizationAppleIDProvider()
+        let request = appleIDProvider.createRequest()
+        request.requestedScopes = [.fullName, .email]
+        
+        let authController = ASAuthorizationController(authorizationRequests: [request])
+        authController.delegate = self
+        authController.presentationContextProvider = self as? ASAuthorizationControllerPresentationContextProviding
+        authController.performRequests()
+    }
+    
+    
+    @objc func handleSubmitButtonPress() {
+        print("\(PostValues.tokenValue)\n\(PostValues.nameValue)\n")
+        
+        // post
+        guard let url = URL(string: "https://ptsv2.com/t/7mp8f-1660891929/post") else {
+            fatalError("Invalid URL")
+        }
+
+        var request = URLRequest(url: url)
+
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "POST"
+        let postingParams: [String: Any] = [
+            "token": PostValues.tokenValue,
+            "name": PostValues.nameValue
+        ]
+        
+        let data = try? JSONSerialization.data(withJSONObject: postingParams)
+        
+        request.httpBody = data
+
+        let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print(error)
+                return
+            }
+
+            guard let httpResponse = response as? HTTPURLResponse else {
+                return
+            }
+
+            guard (200...299).contains(httpResponse.statusCode) else {
+                return
+            }
+
+            guard let data = data, let str = String(data: data, encoding: .utf8) else {
+                fatalError("Invalid Data")
+            }
+
+        }
+
+        task.resume()
+        
+        if PostValues.nameValue == "*_thisisusername_*" {
+            wrongUserName()
+        } else {
+            showRepairCode()
+        }
+    }
+    
+    func wrongUserName() {
+        let wrongNameAlert = UIAlertController(title: "Username not available.", message: "Please write it again.", preferredStyle: .alert)
+        let wrongNameAction = UIAlertAction(title: "Okay", style: .default, handler: nil)
+        wrongNameAlert.addAction(wrongNameAction)
+        present(wrongNameAlert, animated: true, completion: nil)
+    }
+    
+    func showRepairCode() {
+        let repairCode = StartViewController.repairKey //repair code
+        let repairCodeAlert = UIAlertController(title: "Your Repair Code is", message: repairCode, preferredStyle: .alert)
+        let repairCodeAction = UIAlertAction(title: "Checked", style: .default, handler: {(alert: UIAlertAction!) in self.showNiftiTabBarView()})
+        repairCodeAlert.addAction(repairCodeAction)
+        
+        present(repairCodeAlert, animated: true, completion: nil)
+    }
+    
+    func showNiftiTabBarView() {
+        let niftiView = NiftiTabBarController()
+        niftiView.modalPresentationStyle = .fullScreen
+        self.present(niftiView, animated: true, completion: nil)
     }
 
 
 }
 
-//MARK: EXTENSION: Apple Login settings
-extension StartViewController: ASAuthorizationControllerDelegate, ASAuthorizationControllerPresentationContextProviding {
-        func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-            return self.view.window!
-        }
-}
-
 //MARK: EXTENSION: AutoLayouts
 extension StartViewController {
-//    func testAutoLayout() {
-//        test.translatesAutoresizingMaskIntoConstraints = false
-//        test.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-//        test.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
-//    }
     func niftiImageAutoLayout() {
         niftiImageView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -101,8 +238,8 @@ extension StartViewController {
         
         // set other anchors
         niftiImageView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        niftiImageView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -30).isActive = true
-        //niftiImageView.topAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.topAnchor, constant: 100).isActive = true
+        niftiImageView.bottomAnchor.constraint(equalTo: self.view.centerYAnchor, constant: -(self.view.frame.size.height*0.1)).isActive = true
+        
     }
     func signUpViewAutoLayout() {
         signUpView.translatesAutoresizingMaskIntoConstraints = false
@@ -113,33 +250,80 @@ extension StartViewController {
         
         // set other anchors
         signUpView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        //signUpView.centerYAnchor.constraint(equalTo: self.view.centerYAnchor).isActive = true
         signUpView.topAnchor.constraint(equalTo: self.niftiImageView.bottomAnchor).isActive = true
         
     }
-    func appleLoginAutoLayout() {
-        appleLoginButton.translatesAutoresizingMaskIntoConstraints = false
+    func userNameTextFieldAutoLayout() {
+        userNameTextField.translatesAutoresizingMaskIntoConstraints = false
         
-        // set width & height anchors
-        appleLoginButton.widthAnchor.constraint(equalToConstant: 210).isActive = true
-        appleLoginButton.heightAnchor.constraint(equalToConstant: 45).isActive = true
+        NSLayoutConstraint.activate([
+            userNameTextField.widthAnchor.constraint(equalToConstant: 250),
+            userNameTextField.heightAnchor.constraint(equalToConstant: 40),
+            userNameTextField.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            userNameTextField.topAnchor.constraint(equalTo: self.signUpView.bottomAnchor),
+            
+        ])
+    }
+    func submitButtonAutoLayout() {
+        submitButton.translatesAutoresizingMaskIntoConstraints = false
         
-        // set other anchors
-        appleLoginButton.centerXAnchor.constraint(equalTo: self.signUpView.centerXAnchor).isActive = true
-        appleLoginButton.centerYAnchor.constraint(equalTo: self.signUpView.centerYAnchor).isActive = true
+        NSLayoutConstraint.activate([
+            submitButton.widthAnchor.constraint(equalToConstant: 150),
+            submitButton.heightAnchor.constraint(equalToConstant: 40),
+            submitButton.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
+            submitButton.bottomAnchor.constraint(equalTo: self.view.bottomAnchor, constant: -(self.view.frame.size.height*0.15)),
+        ])
+    }
+    
+}
+
+//MARK: Authorization Extension
+extension StartViewController: ASAuthorizationControllerDelegate {
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+        if let appleIDCredential =  authorization.credential as? ASAuthorizationAppleIDCredential {
+            let userIdentifier = appleIDCredential.user
+            PostValues.tokenValue = userIdentifier
+            print("USER IDENTIFIER:\n\n\(userIdentifier)\n\n-----\n\n")
+            
+        }
+    }
+    func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+        print("login error -- \(error)")
     }
 }
 
-//MARK: EXTENSION: handle functions
+//MARK: TextField Extension
 extension StartViewController {
-    @objc func handleAppleLoginButton() {
-        let appleIDProvider = ASAuthorizationAppleIDProvider()
-        let req = appleIDProvider.createRequest()
-        req.requestedScopes = [.fullName, .email]
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
+
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+    }
+
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        return true
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField) {
         
-        let authorizationController = ASAuthorizationController(authorizationRequests: [req])
-        authorizationController.delegate = self
-        authorizationController.presentationContextProvider = self
-        authorizationController.performRequests()
+    }
+
+    func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+        PostValues.nameValue = userNameTextField.text ?? "thisisName"
+    }
+
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        return true
+    }
+
+    func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        return true
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.userNameTextField.resignFirstResponder()
+        self.dismiss(animated: true, completion: nil)
+        return true
     }
 }

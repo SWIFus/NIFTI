@@ -21,7 +21,7 @@ class NiftiTabBarController: UITabBarController {
         let niftiPetVC = NiftiPetViewController()
         let niftiScanVC = NiftiScanViewController()
         let niftiFriendVC = NiftiFriendViewController()
-        let niftiSettingsVC = NiftiSettingsNavigationViewController()
+        let niftiSettingsVC = NiftiSettingsViewController()
         
         niftiQrVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "nifti-home"), selectedImage: UIImage(named: "nifti-home-fill"))
         niftiPetVC.tabBarItem = UITabBarItem(title: nil, image: UIImage(named: "info"), selectedImage: UIImage(named: "info-fill"))
