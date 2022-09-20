@@ -15,6 +15,9 @@
 		24316FDB28AC1D2F0061BB4E /* NiftiSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24316FDA28AC1D2F0061BB4E /* NiftiSettingsViewController.swift */; };
 		24316FDD28AC35640061BB4E /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 24316FDC28AC35640061BB4E /* SettingsTableViewCell.swift */; };
 		2431702A28AFD4EF0061BB4E /* SettingsHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2431702928AFD4EF0061BB4E /* SettingsHeaderView.swift */; };
+		246E4B9128D8717B0032A1E6 /* ServiceCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246E4B9028D8717B0032A1E6 /* ServiceCollectionViewFlowLayout.swift */; };
+		246E4B9328D871900032A1E6 /* ServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246E4B9228D871900032A1E6 /* ServiceCell.swift */; };
+		246E4BB728D9B2B10032A1E6 /* FaceIDAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 246E4BB628D9B2B10032A1E6 /* FaceIDAuth.swift */; };
 		249152B4289F9C1900211D08 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249152B3289F9C1900211D08 /* AppDelegate.swift */; };
 		249152B6289F9C1900211D08 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249152B5289F9C1900211D08 /* SceneDelegate.swift */; };
 		249152B8289F9C1900211D08 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 249152B7289F9C1900211D08 /* StartViewController.swift */; };
@@ -39,6 +42,9 @@
 		24316FDA28AC1D2F0061BB4E /* NiftiSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NiftiSettingsViewController.swift; sourceTree = "<group>"; };
 		24316FDC28AC35640061BB4E /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		2431702928AFD4EF0061BB4E /* SettingsHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsHeaderView.swift; sourceTree = "<group>"; };
+		246E4B9028D8717B0032A1E6 /* ServiceCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		246E4B9228D871900032A1E6 /* ServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCell.swift; sourceTree = "<group>"; };
+		246E4BB628D9B2B10032A1E6 /* FaceIDAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FaceIDAuth.swift; sourceTree = "<group>"; };
 		249152B0289F9C1900211D08 /* Nifti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nifti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		249152B3289F9C1900211D08 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		249152B5289F9C1900211D08 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -102,13 +108,16 @@
 				249152C1289F9C1B00211D08 /* Info.plist */,
 				24A84E5828A7FE5C00C96899 /* NiftiTabBarController.swift */,
 				24316FD028AA4ED50061BB4E /* QrReaderView.swift */,
+				246E4BB628D9B2B10032A1E6 /* FaceIDAuth.swift */,
+				246E4B9028D8717B0032A1E6 /* ServiceCollectionViewFlowLayout.swift */,
+				246E4B9228D871900032A1E6 /* ServiceCell.swift */,
 				24316FD628AC09180061BB4E /* FriendsCollectionViewFlowLayout.swift */,
 				24316FD828AC0D8E0061BB4E /* FriendsCell.swift */,
+				24FAE60328B2103F00C923BE /* PetCollectionViewFlowLayout.swift */,
 				24FAE60128B20ACA00C923BE /* PetCell.swift */,
 				24316FDC28AC35640061BB4E /* SettingsTableViewCell.swift */,
 				2431702928AFD4EF0061BB4E /* SettingsHeaderView.swift */,
 				24FAE5FD28B0CE9E00C923BE /* SettingsSectionHeaderView.swift */,
-				24FAE60328B2103F00C923BE /* PetCollectionViewFlowLayout.swift */,
 			);
 			path = Nifti;
 			sourceTree = "<group>";
@@ -197,14 +206,17 @@
 				24FAE5FE28B0CE9E00C923BE /* SettingsSectionHeaderView.swift in Sources */,
 				24316FDD28AC35640061BB4E /* SettingsTableViewCell.swift in Sources */,
 				24316FD328AA71E20061BB4E /* NiftiFriendViewController.swift in Sources */,
+				246E4B9128D8717B0032A1E6 /* ServiceCollectionViewFlowLayout.swift in Sources */,
 				24A84E5928A7FE5C00C96899 /* NiftiTabBarController.swift in Sources */,
 				24FAE60228B20ACA00C923BE /* PetCell.swift in Sources */,
 				249152EA28A2462100211D08 /* NiftiQrViewController.swift in Sources */,
+				246E4BB728D9B2B10032A1E6 /* FaceIDAuth.swift in Sources */,
 				24316FD928AC0D8E0061BB4E /* FriendsCell.swift in Sources */,
 				24A84E5B28A8E66700C96899 /* NiftiPetViewController.swift in Sources */,
 				249152B6289F9C1900211D08 /* SceneDelegate.swift in Sources */,
 				24316FDB28AC1D2F0061BB4E /* NiftiSettingsViewController.swift in Sources */,
 				2431702A28AFD4EF0061BB4E /* SettingsHeaderView.swift in Sources */,
+				246E4B9328D871900032A1E6 /* ServiceCell.swift in Sources */,
 				24316FCF28AA4DF40061BB4E /* NiftiScanViewController.swift in Sources */,
 				24A84E3128A6120E00C96899 /* ExtensionUtil.swift in Sources */,
 			);

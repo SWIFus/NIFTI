@@ -241,8 +241,6 @@ extension NiftiPetViewController {
             self.collectionView.heightAnchor.constraint(equalToConstant: self.connectToApps.frame.size.height*0.3),
             self.collectionView.centerYAnchor.constraint(equalTo: self.connectToApps.centerYAnchor),
         ])
-        
-        
     }
 }
 

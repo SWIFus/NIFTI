@@ -16,7 +16,7 @@ class QRCodeMakerViewController: UIViewController {
         
         self.view.backgroundColor = UIColor.systemBlue
         
-        var qrCode = QRCode(string: "www.google.com")
+        var qrCode = QRCode(string: "NiftiSNS")
         qrCode!.color = UIColor(red: 0.121, green: 0.121, blue: 0.121, alpha: 1)
         qrCode!.backgroundColor = UIColor.systemBlue
         qrCode!.size = CGSize(width: 200, height: 200)
