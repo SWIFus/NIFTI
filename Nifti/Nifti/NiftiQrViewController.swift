@@ -8,6 +8,26 @@
 import UIKit
 import QRCode
 
+let serviceButtonSet = [
+    UIImage(named: "service1-chat"),
+    UIImage(named: "service2-sns"),
+    UIImage(named: "service3-shop"),
+    UIImage(named: "service4-crypto"),
+    UIImage(named: "service5-bank"),
+    UIImage(named: "service6-security"),
+    UIImage(named: "service7-community"),
+]
+
+let serviceNameSet = [
+    "Nifti Chat",
+    "Nifti SNS",
+    "Nifti Shop",
+    "Nifti Coin",
+    "Nifti Bank",
+    "Nifti Secure",
+    "Nifti United",
+]
+
 class NiftiQrViewController: UIViewController {
     
 //MARK: Label
@@ -39,6 +59,21 @@ class NiftiQrViewController: UIViewController {
         return commingSoon
     }()
     
+    let serviceLabel: UILabel = {
+        let service = UILabel()
+        
+        service.textColor = .black
+        service.font = .boldSystemFont(ofSize: 23)
+        service.numberOfLines = 1
+        service.text = "Services In Use"
+        service.textAlignment = .left
+        service.textColor = .white
+        
+        service.translatesAutoresizingMaskIntoConstraints = false
+        
+        return service
+    }()
+    
 //MARK: View
     let qrView: UIView = {
         let qr = UIView()
@@ -47,8 +82,22 @@ class NiftiQrViewController: UIViewController {
         qr.backgroundColor = .white
         qr.layer.backgroundColor = UIColor(red: 0.882, green: 0.863, blue: 0.851, alpha: 1).cgColor
         qr.layer.cornerRadius = 40
+        qr.translatesAutoresizingMaskIntoConstraints = false
         
         return qr
+    }()
+    
+    let connectToApps: UIView = {
+        let connect = UIView()
+        
+        connect.frame = CGRect(x: 0, y: 0, width: 320, height: 250)
+        connect.backgroundColor = .white
+//        connect.layer.backgroundColor = UIColor(red: 0.7, green: 0.7, blue: 0.72, alpha: 1).cgColor
+        connect.layer.backgroundColor = UIColor.clear.cgColor
+        connect.layer.cornerRadius = 40
+        connect.clipsToBounds = true
+        
+        return connect
     }()
     
 //MARK: ImageView
@@ -65,7 +114,7 @@ class NiftiQrViewController: UIViewController {
     }()
     
     let qrCodeImageView: UIImageView = {
-        var qrCode = QRCode(string: "www.google.com")
+        var qrCode = QRCode(string: "Nifti")
         
         qrCode!.color = .black
 
@@ -79,16 +128,31 @@ class NiftiQrViewController: UIViewController {
         return qrCodeImg
         
     }()
+
+//MARK: CollectionView
     
-    let connectToApps: UIView = {
-        let connect = UIView()
-        
-        connect.frame = CGRect(x: 0, y: 0, width: 320, height: 250)
-        connect.backgroundColor = .white
-        connect.layer.backgroundColor = UIColor(red: 0.882, green: 0.863, blue: 0.851, alpha: 1).cgColor
-        connect.layer.cornerRadius = 40
-        
-        return connect
+    let serviceFlowLayout: ServiceCollectionViewFlowLayout = {
+        let layout = ServiceCollectionViewFlowLayout()
+        layout.cellSpacing = 10
+        layout.numOfColumns = 1
+        return layout
+    }()
+    
+    var dataSource = getServiceButtons()
+    var dataSourceLabel = getServiceLabels()
+    
+    lazy var serviceCollectionView: UICollectionView = {
+        let view = UICollectionView(frame: .zero, collectionViewLayout: self.serviceFlowLayout)
+        view.isScrollEnabled = true
+        view.showsHorizontalScrollIndicator = true
+        view.showsVerticalScrollIndicator = false
+        view.contentInset = .zero
+        view.backgroundColor = .clear
+//        view.backgroundColor = .systemRed
+        view.clipsToBounds = true
+        view.register(ServiceCell.self, forCellWithReuseIdentifier: ServiceCell.identifier)
+        view.translatesAutoresizingMaskIntoConstraints = false
+        return view
     }()
     
     
@@ -112,23 +176,27 @@ class NiftiQrViewController: UIViewController {
         self.view.addSubview(usernameLabel)
         self.view.addSubview(qrCodeImageView)
         self.view.addSubview(connectToApps)
-        self.connectToApps.addSubview(commingSoonLabel)
+//        self.connectToApps.addSubview(commingSoonLabel)
+        self.connectToApps.addSubview(self.serviceCollectionView)
+        self.connectToApps.addSubview(self.serviceLabel)
         
         qrViewAutoLayout()
         //qrImageViewAutoLayout()
         usernameLabelAutoLayout()
         qrCodeImageViewAutoLayout()
         connectToAppsAutoLayout()
-        commingSoonLabelAutoLayout()
+//        commingSoonLabelAutoLayout()
+        serviceCollectionViewAutoLayout()
+        serviceLabelAutoLayout()
         
+        self.serviceCollectionView.dataSource = self
+        self.serviceCollectionView.delegate = self
     }
 }
 
 //MARK: EXTENSION: AutoLayouts
 extension NiftiQrViewController {
     func qrViewAutoLayout() {
-        qrView.translatesAutoresizingMaskIntoConstraints = false
-        
         let qrViewConstraints = [
             // set width & height anchors
             qrView.widthAnchor.constraint(equalToConstant: 200),
@@ -138,20 +206,24 @@ extension NiftiQrViewController {
             qrView.centerXAnchor.constraint(equalTo: self.view.centerXAnchor),
             qrView.topAnchor.constraint(equalTo: self.view.topAnchor, constant: 128)
         ]
-        
         NSLayoutConstraint.activate(qrViewConstraints)
     }
     
     func qrImageViewAutoLayout() {
         qrImageView.translatesAutoresizingMaskIntoConstraints = false
         
-        // set width & height anchors
-        qrImageView.widthAnchor.constraint(equalToConstant: 120).isActive = true
-        qrImageView.heightAnchor.constraint(equalToConstant: 120).isActive = true
+        let qrImageViewConstraints = [
+            // set width & height anchors
+            qrImageView.widthAnchor.constraint(equalToConstant: 120),
+            qrImageView.heightAnchor.constraint(equalToConstant: 120),
+            
+            // set other anchors
+            qrImageView.centerXAnchor.constraint(equalTo: self.qrView.centerXAnchor),
+            qrImageView.centerYAnchor.constraint(equalTo: self.qrView.centerYAnchor)
+        ]
         
-        // set other anchors
-        qrImageView.centerXAnchor.constraint(equalTo: self.qrView.centerXAnchor).isActive = true
-        qrImageView.centerYAnchor.constraint(equalTo: self.qrView.centerYAnchor).isActive = true
+        NSLayoutConstraint.activate(qrImageViewConstraints)
+        
     }
     
     func usernameLabelAutoLayout() {
@@ -183,12 +255,12 @@ extension NiftiQrViewController {
         connectToApps.translatesAutoresizingMaskIntoConstraints = false
         
         // set width & height anchors
-        connectToApps.widthAnchor.constraint(equalToConstant: self.view.frame.size.width * 0.8).isActive = true
-        connectToApps.heightAnchor.constraint(equalToConstant: self.view.frame.size.height * 0.28).isActive = true
+        connectToApps.widthAnchor.constraint(equalToConstant: self.view.frame.size.width * 0.9).isActive = true
+        connectToApps.heightAnchor.constraint(equalToConstant: self.view.frame.size.height * 0.25).isActive = true
         
         // set other anchors
         connectToApps.centerXAnchor.constraint(equalTo: self.view.centerXAnchor).isActive = true
-        connectToApps.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: self.view.frame.size.height * 0.225).isActive = true
+        connectToApps.centerYAnchor.constraint(equalTo: self.view.centerYAnchor, constant: self.view.frame.size.height * 0.25).isActive = true
 //        connectToApps.topAnchor.
     }
     
@@ -208,4 +280,52 @@ extension NiftiQrViewController {
         NSLayoutConstraint.activate(commingSoonLabelConstraints)
     }
     
+    func serviceCollectionViewAutoLayout() {
+        NSLayoutConstraint.activate([
+            self.serviceCollectionView.leadingAnchor.constraint(equalTo: self.connectToApps.leadingAnchor, constant: 10),
+            self.serviceCollectionView.trailingAnchor.constraint(equalTo: self.connectToApps.trailingAnchor, constant: -10),
+            self.serviceCollectionView.heightAnchor.constraint(equalToConstant: self.connectToApps.frame.size.height*0.3),
+            self.serviceCollectionView.bottomAnchor.constraint(equalTo: self.connectToApps.bottomAnchor, constant: -(self.connectToApps.frame.size.height)*0.2),
+        ])
+    }
+    
+    func serviceLabelAutoLayout() {
+        NSLayoutConstraint.activate([
+            self.serviceLabel.leadingAnchor.constraint(equalTo: self.connectToApps.leadingAnchor, constant: 10),
+            self.serviceLabel.trailingAnchor.constraint(equalTo: self.connectToApps.trailingAnchor, constant: -10),
+            self.serviceLabel.heightAnchor.constraint(equalToConstant: self.connectToApps.frame.size.height*0.2),
+            self.serviceLabel.topAnchor.constraint(equalTo: self.connectToApps.topAnchor, constant: (self.connectToApps.frame.size.height)*0.1),
+        ])
+    }
+}
+
+extension NiftiQrViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        self.dataSource.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = serviceCollectionView.dequeueReusableCell(withReuseIdentifier: ServiceCell.identifier, for: indexPath) as! ServiceCell
+        cell.prepare(image: self.dataSource[indexPath.item], label: self.dataSourceLabel[indexPath.item])
+        return cell
+    }
+}
+
+extension NiftiQrViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        guard let flowLayout = collectionViewLayout as? ServiceCollectionViewFlowLayout, flowLayout.numOfColumns > 0 else { fatalError() }
+        let widthOfCells = collectionView.bounds.height
+        let widthOfSpacing = CGFloat(flowLayout.numOfColumns - 1) * flowLayout.cellSpacing
+        let width = (widthOfCells - widthOfSpacing) / CGFloat(flowLayout.numOfColumns)
+        
+        return CGSize(width: width, height: width * flowLayout.ratioHeighttoWidth)
+    }
+}
+
+func getServiceButtons() -> [UIImage?] {
+    serviceButtonSet
+}
+
+func getServiceLabels() -> [String?] {
+    serviceNameSet
 }

@@ -10,6 +10,7 @@ import AVFoundation
 
 class NiftiScanViewController: UIViewController {
     
+//MARK: QR Related
     let qrReaderView: QrReaderView = {
         let readerView = QrReaderView(frame: CGRect(x: 0, y: 0, width: 314, height: 314))
         
@@ -34,17 +35,15 @@ class NiftiScanViewController: UIViewController {
         return read
     }()
     
+//MARK: Authentication Related
+    let auth = FaceIDAuth()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.view.backgroundColor = UIColor(red: 0.121, green: 0.121, blue: 0.121, alpha: 1)
-        
-        self.view.addSubview(qrReaderView)
-        
-        self.qrReaderView.delegate = self
-        
-        self.view.addSubview(readButton)
-        
+        setView()
+        setAuth()
+        addViews()
         setAutoLayouts()
     }
     
@@ -66,6 +65,20 @@ class NiftiScanViewController: UIViewController {
         sender.isSelected = self.qrReaderView.isRunning
     }
     
+    func setView() {
+        self.view.backgroundColor = UIColor(red: 0.121, green: 0.121, blue: 0.121, alpha: 1)
+    }
+    
+    func setAuth() {
+        auth.delegate = self
+    }
+    
+    func addViews() {
+        self.view.addSubview(qrReaderView)
+        self.qrReaderView.delegate = self
+        self.view.addSubview(readButton)
+    }
+    
     func setAutoLayouts() {
         qrReaderViewAutoLayout()
         readButtonAutoLayout()
@@ -74,7 +87,6 @@ class NiftiScanViewController: UIViewController {
 
 extension NiftiScanViewController: QrReaderViewDelegate {
     func qrReaderComplete(status: QrReaderStatus) {
-
         var title = ""
         var message = ""
         switch status {
@@ -84,10 +96,9 @@ extension NiftiScanViewController: QrReaderViewDelegate {
                 message = "QR Code not found.\nPlease try again."
                 break
             }
-
-            title = "Notice"
+            title = "Identification Request"
 //            message = "Success!\n\(code)"
-            message = "인식 성공!\n친구가 추가되었습니다."
+            message = "Are you sure to\nidentify \(code)?"
         case .fail:
             title = "Error"
             message = "QR Code not found.\nPlease try again."
@@ -101,13 +112,37 @@ extension NiftiScanViewController: QrReaderViewDelegate {
                 return
             }
         }
-
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
-        let okAction = UIAlertAction(title: "확인", style: .default, handler: nil)
+        let yesAction = UIAlertAction(title: "Yes", style: .default, handler: { action in
+            //여기다
+            //self.showSuccessAlertView()
+            self.auth.execute()
+        })
+        let noAction = UIAlertAction(title: "No", style: .destructive, handler: nil)
 
-        alert.addAction(okAction)
+        alert.addAction(yesAction)
+        alert.addAction(noAction)
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    
+}
+
+extension NiftiScanViewController: AuthenticateStateDelegate {
+    func didUpdateState(_ state: FaceIDAuth.AuthenticationState) {
+        if case .loggedIn = state {
+            showSuccessAlertView()
+        }
+    }
+    
+    func showSuccessAlertView() {
+        let successAlert = UIAlertController(title: "Success", message: "Successfully Identified", preferredStyle: .alert)
+        
+        let okAction = UIAlertAction(title: "Yes", style: .default, handler: nil)
+        
+        successAlert.addAction(okAction)
+        self.present(successAlert, animated: true, completion: nil)
     }
 }
 
