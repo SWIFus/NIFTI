@@ -40,6 +40,16 @@ app.post(`/userInfo/edit`, (req, res) => { // User Avatar Change
     });
 });
 
+app.post(`/user/register/`, (req, res) => {
+    db.query(`SELECT name FROM user WHERE id=?`, [req.body.name], (err, data) => {
+        if (!err) {
+            res.send(getSmartContract(req.body.name))
+        } else {
+            res.send(err)
+        }
+    })
+})
+
 
 // Add New User
 app.post(`add/user/newUser`, (req, res) => {
@@ -71,6 +81,8 @@ app.post(`add/user/newUser`, (req, res) => {
         }
     })
 })
+
+
 
 
 function giveNewUserInfo(name, created_at) {
