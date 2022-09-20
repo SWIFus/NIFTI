@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/static/css/main.ff7f5a29.css",
+    "main.js": "/static/js/main.91f00677.js",
+    "static/media/NIFTISmallLogo.png": "/static/media/NIFTISmallLogo.ec09322f9895bd4be140.png",
+    "index.html": "/index.html",
+    "main.ff7f5a29.css.map": "/static/css/main.ff7f5a29.css.map",
+    "main.91f00677.js.map": "/static/js/main.91f00677.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.ff7f5a29.css",
+    "static/js/main.91f00677.js"
+  ]
+}

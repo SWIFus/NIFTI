@@ -1,0 +1,74 @@
+.qr-button,
+.qr-button *,
+.qr-button :after,
+.qr-button :before,
+.qr-button:after,
+.qr-button:before {
+  border: 0 solid;
+  box-sizing: border-box;
+  border-color: rgb(0, 144, 255);
+}
+.qr-button {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: button;
+  background-color: #fff;
+  background-image: none;
+  color: rgb(0, 144, 255);
+  cursor: pointer;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    Segoe UI, Roboto, Helvetica Neue, Arial, Noto Sans, sans-serif,
+    Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol, Noto Color Emoji;
+  font-size: 100%;
+  line-height: 1.5;
+  margin: 0;
+  -webkit-mask-image: -webkit-radial-gradient(#000, #fff);
+  padding: 0;
+}
+.qr-button:disabled {
+  cursor: default;
+}
+.qr-button:-moz-focusring {
+  outline: auto;
+}
+.qr-button svg {
+  display: block;
+  vertical-align: middle;
+}
+.qr-button [hidden] {
+  display: none;
+}
+.qr-button {
+  -webkit-animation: pulse 2s infinite;
+  animation: pulse 2s infinite;
+  border: 1px solid;
+  border-radius: 999px;
+  box-shadow: 0 0 0 2em transparent;
+  box-sizing: border-box;
+  display: block;
+  font-weight: 900;
+  -webkit-mask-image: none;
+  overflow: hidden;
+  position: absolute;
+  padding: 1.2rem 3rem;
+  text-transform: uppercase;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgb(0, 144, 255);
+  }
+}
+
+.qrcode-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.qrcode {
+    margin-top: 300px;
+}
+
+.qr-button {
+    margin-top: 600px;
+}
