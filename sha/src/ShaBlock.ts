@@ -39,13 +39,15 @@ class Blockchain {
         this.blocks.push(newBlock)
     }
 
-    public getBlocks() { // 현재 블록들 리턴
+    public getBlocks() { 
         return [...this.blocks]
     }
 
 
-    public getData(data:string) { // 사용자가 입력한 이름을 hash화
+    public getData(data:string) { 
         return CryptoJS.SHA256(data).toString()
     }
+
+    
 }
 
